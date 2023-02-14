@@ -1,0 +1,155 @@
+/*para el interruptor que cambia de oscuro a claro*/
+.interruptor {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.interruptor input {opacity: 0;}
+
+.boton-deslizante {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    right: 0;
+    background-color: rgb(134, 140, 133);
+    cursor: pointer;
+    border-radius: 40px;
+}
+
+.boton-deslizante #circulo {
+    position: absolute;
+    background-color: white;
+    content: "";
+    height: 20px;
+    width: 20px;
+    bottom: 5px;
+    left: 5px;
+    transition: 0.5s;
+    border-radius: 50%;
+}
+
+input:checked + .boton-deslizante {background-color: rgb(78, 218, 39);}
+
+input:checked + .boton-deslizante #circulo {
+    background-color: black;
+}
+
+/*para el popup*/
+.popup-cambiar-tema {
+    display: none;
+    position: fixed;
+    border-radius: 6px;
+    left: 2%;
+    top: 60%;
+    width: 12%;
+    height: 10%;
+    z-index: 3;
+}
+.container-claro {
+    position: relative;
+    border-radius: 6px;
+    left: 3%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.container-claro:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.tema-claro-texto {
+    position: relative; 
+    left: 10%;
+    top: 5px;
+    font-size: large;
+    font-weight: bold;
+}
+
+.interruptor, .tema-claro-texto {display: inline-block;}
+
+.mostrar-popup-tema {
+    display: block;
+    animation: aparecer 0.5s;
+}
+  
+@keyframes aparecer {
+    from {opacity: 0;} to {opacity:1;}
+}
+
+/* MEDIA QUERIES */
+
+/* Tablet */
+
+@media (min-width: 481px) and (max-width: 900px) {
+    .interruptor {
+        width: 65%;
+        height: 30px;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    .tema-claro-texto {
+        left: 5%;
+        font-size: medium;
+    }
+
+    .popup-cambiar-tema {
+        top: 44vh;
+        width: 12%;
+        height: 7vh;
+    }
+
+    .tema-claro-texto {
+        top: 0;
+        font-size: large;
+        font-weight: bold;
+    }
+}
+
+/* Movil */
+
+@media (max-width: 480px) {
+    .interruptor {
+        width: 80%;
+        height: 20px;
+        left: 0;
+        bottom: 38%;
+    }
+
+    .boton-deslizante {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 10px;
+        right: 0;
+    }
+    
+    .boton-deslizante #circulo {
+        height: 15px;
+        width: 15px;
+        bottom: 3px;
+        left: 3px;
+    }
+
+    .popup-cambiar-tema {
+        top: 50vh;
+        left: 2%;
+        width: 15%;
+        height: 40px;
+    }
+
+    .interruptor, .tema-claro-texto {display: block;}
+
+    .tema-claro-texto {
+        position: absolute;
+        font-size: xx-small;
+        left: 5px;
+        top: 27px;
+    }
+}

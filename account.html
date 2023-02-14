@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Hoja de estilo usada de la pagina web -->  
+        <link rel="stylesheet" href="style/stylesheet-regions.css">
+        <link rel="stylesheet" href="style/stylesheet-account.css">
+        <link rel="stylesheet" href="style/stylesheet-popup.css">
+        <link rel="stylesheet" href="style/stylesheet-boton-cambiar-tema.css">
+        <link rel="icon" type="image/x-icon" href="images/budget-management-logo.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8" />
+        <meta name="BudgetPro"  />
+        <html lang="en">
+        <title>BudgetPro</title>
+        
+    </head>
+
+    <body>
+        <header>
+            <div class="top" id="header">
+                <img id="budget-logo" src="images/budget-management-logo.png" alt="BudgetPro Logo">
+                <div id="budget-brand-name"><h1>BudgetPro</h1></div>
+                <input type="search" placeholder="Buscar" id="searchbar">
+                <img id="foto-perfil" src="images/empty-profile.png" alt="Foto Perfil">
+            </div><br>
+
+            <div class="popup" id="popup-perfil">
+                <div class="container" id="popup-container">
+                    <br>
+                    <button class="account" id="account-text">account</button><br>
+                    <button class="perfil" id="perfil-text">Perfil</button><br>
+                    <button class="cerrar-sesion" id="cerrar-sesion-text">Cerrar sesión</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- columna izquierda-->
+        <nav class="izquierda" id="menu-container">
+            <div class="menu">
+                <div id="opcion1">
+                    <img id="home-icono" src="images/home.png" alt="Home">
+                    <div id="home">Home</div>
+                </div><br>
+                <div id="opcion2">
+                    <img id="library-icono" src="images/library.png" alt="library">
+                    <div id="library">library</div>
+                </div><br>
+                <div id="opcion3">
+                    <img id="create-icono" src="images/create.png" alt="create">
+                    <div id="create">Playlist</div>
+                </div><br>
+                <div id="opcion4">
+                    <img id="favorito-icono" src="images/favorito.png" alt="Favorito">
+                    <div id="favorito">Favoritos</div>
+                </div><br>
+                <div id="opcion5">
+                    <img id="settings-icono" src="images/settings.png" alt="settings">
+                    <div id="settings">settings</div>
+                </div>
+                <div class=popup-cambiar-tema id="cambiar-tema">
+                    <div class="container-claro" id="cambiar-tema-container"><br>
+                        <label class="interruptor" id="interruptor-modo-oscuro">
+                            <input type="checkbox">
+                            <span class="boton-deslizante" id="circulo-deslizante"><div id="circulo"></div></span>
+                        </label>
+                        <div class="tema-claro-texto">Tema claro</div>
+                    </div>
+                </div>
+            </div>
+            <div id="politicas">
+                <div id="privacidad" class="info"><a id="privacidad-texto">Politica de privacidad</a></div><br>
+                <div id="cookies" class="info"><a id="cookies-texto">Politica de cookies</a></div>
+            </div>
+        </nav>
+        
+        <!-- columna derecha-->
+        <main class="derecha" id="main-container">
+            <div class="contenido">
+                <div class="datos" id="container-datos">
+                <form name="form" id="account-form" method="POST">
+                    <h2 class="subtitulos">Foto de perfil</h2>
+                    <input type="file" id="userpicture" accept=".jpg, .jpeg, .png">
+                    <label for="userpicture" id="user-picture-label">
+                        <img src="" id="user-profile-picture" alt="Foto de perfil del usuario">
+                    </label><br>
+                    <h2 class="subtitulos">Nombre de usuario</h2>
+                    <input type="text" id="username" required><br>
+                    <h2 class="subtitulos">Contraseña</h2>
+                    <input type="password" id="pswd" required><br>
+                    <h2 class="subtitulos">Nombre</h2>
+                    <input type="text" id="name" required><br>
+                    <h2 class="subtitulos">Apellidos</h2>
+                    <input type="text" id="surname1" required><br>
+                    <input type="text" id="surname2"><br>
+                    <h2 class="subtitulos">Correo electrónico</h2>
+                    <input type="email" id="useremail" required><br>
+                    <h2 class="subtitulos">Fecha de nacimiento</h2>
+                    <input type="date" id="birthdate" required><br>
+                    <input type="submit" value="Guardar" id="enviar"><br>
+                </form>           
+                </div>
+                <br>
+            </div>
+        </main>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="script/script-account.js"></script>
+        <script src="script/script-popup.js"></script>
+        <script src="script/script-menu.js"></script>
+        <script src="script/script-searchbar.js"></script>
+        <script src="script/script-dark-mode.js"></script>
+    </body>
+</html>

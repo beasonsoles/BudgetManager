@@ -1,0 +1,94 @@
+h2 {
+    color: white;
+    padding: 2%;
+}
+
+h3 {
+    color: white;
+    position: relative;
+    padding: 2%;
+    left: 17%;
+}
+
+.datos {
+    position: relative;
+    width: 95%;
+    background-color: black;
+    border-radius: 6px;
+    margin-bottom: 2%;
+    margin-left: 2%;
+}
+
+#username, #pswd, #name, #surname1, #surname2, #useremail, #birthdate, #userpicture {
+    position: relative;
+    left: 2%;
+    margin-bottom: 2%;
+    padding: 1%;
+    border-radius: 5px;
+    width: 90%;
+}
+
+#userpicture {
+    display: none;
+}
+
+#user-profile-picture {
+    position: relative;
+    border-radius: 50%;
+    left: 2%;
+    top: 15%;
+    width: 150px;
+    height: 150px;
+}
+
+#user-profile-picture:hover {
+    transform: scale(1.02);
+}
+
+#enviar {
+    position: relative;
+    margin-bottom: 5%;
+    width: 20%; 
+    height: 50px;
+    left: 40%;
+    color:white;
+    background-color:rgb(20, 145, 241);
+}
+
+#politicas {
+    position: fixed;
+    bottom: 3%;
+    left: 1%;
+    z-index: 3;
+}
+
+/* MEDIA QUERIES */
+
+/* Tablet */
+
+@media (min-width: 481px) and (max-width: 900px) {
+    .datos {
+        margin-top: 5%;
+        margin-bottom: 30%;
+    }
+}
+
+/* Movil */
+
+@media (max-width: 480px) {
+    .datos {
+        margin-top: 2%;
+        margin-bottom: 40%;
+    }
+
+    #enviar, #resetear {
+        width: 30%; 
+        height: 30px;
+        left: 20%;
+        margin-top: 10%;
+    }
+
+    #politicas {
+        display:none;
+    }
+}
