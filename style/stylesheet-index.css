@@ -1,4 +1,4 @@
-.novedades-canciones, .novedades-albumes {
+/*.novedades-canciones, .novedades-albumes {
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -9,24 +9,15 @@
 
 .novedades-albumes {
     margin-bottom: 10%;
-}
+}*/
 
-.inicio-sesion {
+.register {
     float: right;
     padding: 8px;
     position: relative;
     top: 30%;
     right: 2%;
     cursor: pointer;
-}
-
-.contador {
-    background-color: black;
-    position: relative;
-    border-radius: 5px;
-    color: white;
-    width: 70%;
-    left: 15%;
 }
 
 footer {
@@ -39,15 +30,8 @@ footer {
     z-index: 3;
 }
 
-.anuncio {
+.ad {
     cursor: pointer;
-}
-
-#politicas {
-    position: fixed;
-    bottom: 15%;
-    left: 1%;
-    z-index: 3;
 }
 
 /* MEDIA QUERIES */
@@ -55,26 +39,9 @@ footer {
 /* Tablet */
 
 @media (min-width: 481px) and (max-width: 900px) {
-    .novedades-albumes {
+    /*.novedades-albumes {
         margin-bottom: 30%;
-    }
-
-    .musica {
-        width: 140px;
-        height: 140px;
-    }
-
-    .descripcion {
-        width: 140px;
-    }
-
-    .caratula audio {
-        width: 130px;
-    }
-
-    .reproductor {
-        height: 30px;
-    }
+    }*/
 
     footer{
         left: 30%;
@@ -82,45 +49,22 @@ footer {
     }
 }
 
-/* Movil */
+/* Smartphone */
 
 @media (max-width: 480px) {
-    .inicio-sesion {
+    .register {
         top: 25%;
         right: 2%;
         font-size: small;
     }
 
-    .novedades-albumes {
+    /*.novedades-albumes {
         margin-bottom: 40%;
-    }
+    }*/
 
-    .musica {
-        width: 110px;
-        height: 110px;
-    }
-
-    .descripcion {
-        width: 110px;
-        font-size: 60%;
-    }
-
-    .caratula audio {
-        width: 110px;
-        left: 7px;
-    }
-
-    .reproductor {
-        height: 30px;
-    }
-
-    .anuncio {
+    .ad {
         position: relative;
         font-size: medium;
         right: 50px;
-    }
-
-    #politicas {
-        display:none;
     }
 }

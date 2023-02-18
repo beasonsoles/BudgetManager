@@ -1,14 +1,14 @@
-/*para el interruptor que cambia de oscuro a claro*/
-.interruptor {
+/* switch that changes theme from dark to light*/
+.switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 30px;
 }
 
-.interruptor input {opacity: 0;}
+.switch input {opacity: 0;}
 
-.boton-deslizante {
+.sliding-button {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -19,7 +19,7 @@
     border-radius: 40px;
 }
 
-.boton-deslizante #circulo {
+.sliding-button #circle {
     position: absolute;
     background-color: white;
     content: "";
@@ -31,14 +31,14 @@
     border-radius: 50%;
 }
 
-input:checked + .boton-deslizante {background-color: rgb(78, 218, 39);}
+input:checked + .sliding-button {background-color: rgb(78, 218, 39);}
 
-input:checked + .boton-deslizante #circulo {
+input:checked + .sliding-button #circle {
     background-color: black;
 }
 
-/*para el popup*/
-.popup-cambiar-tema {
+/*pop-up*/
+.change-theme-popup {
     display: none;
     position: fixed;
     border-radius: 6px;
@@ -48,7 +48,7 @@ input:checked + .boton-deslizante #circulo {
     height: 10%;
     z-index: 3;
 }
-.container-claro {
+.container-light {
     position: relative;
     border-radius: 6px;
     left: 3%;
@@ -58,12 +58,12 @@ input:checked + .boton-deslizante #circulo {
     background-color: white;
 }
 
-.container-claro:hover {
+.container-light:hover {
     transform: scale(1.02);
     cursor: pointer;
 }
 
-.tema-claro-texto {
+.light-theme-text {
     position: relative; 
     left: 10%;
     top: 5px;
@@ -71,9 +71,9 @@ input:checked + .boton-deslizante #circulo {
     font-weight: bold;
 }
 
-.interruptor, .tema-claro-texto {display: inline-block;}
+.switch, .light-theme-text {display: inline-block;}
 
-.mostrar-popup-tema {
+.show-popup-theme {
     display: block;
     animation: aparecer 0.5s;
 }
@@ -87,42 +87,42 @@ input:checked + .boton-deslizante #circulo {
 /* Tablet */
 
 @media (min-width: 481px) and (max-width: 900px) {
-    .interruptor {
+    .switch {
         width: 65%;
         height: 30px;
         bottom: 10px;
         left: 10px;
     }
 
-    .tema-claro-texto {
+    .light-theme-text {
         left: 5%;
         font-size: medium;
     }
 
-    .popup-cambiar-tema {
+    .change-theme-popup {
         top: 44vh;
         width: 12%;
         height: 7vh;
     }
 
-    .tema-claro-texto {
+    .light-theme-text {
         top: 0;
         font-size: large;
         font-weight: bold;
     }
 }
 
-/* Movil */
+/* Smartphone */
 
 @media (max-width: 480px) {
-    .interruptor {
+    .switch {
         width: 80%;
         height: 20px;
         left: 0;
         bottom: 38%;
     }
 
-    .boton-deslizante {
+    .sliding-button {
         position: absolute;
         top: 0;
         bottom: 0;
@@ -130,23 +130,23 @@ input:checked + .boton-deslizante #circulo {
         right: 0;
     }
     
-    .boton-deslizante #circulo {
+    .sliding-button #circle {
         height: 15px;
         width: 15px;
         bottom: 3px;
         left: 3px;
     }
 
-    .popup-cambiar-tema {
+    .change-theme-popup {
         top: 50vh;
         left: 2%;
         width: 15%;
         height: 40px;
     }
 
-    .interruptor, .tema-claro-texto {display: block;}
+    .switch, .light-theme-text {display: block;}
 
-    .tema-claro-texto {
+    .light-theme-text {
         position: absolute;
         font-size: xx-small;
         left: 5px;

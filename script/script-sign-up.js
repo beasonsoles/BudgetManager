@@ -2,33 +2,33 @@ let form = document.getElementById("sign-up-form");
 let facebook = document.getElementById("facebook-link");
 let google = document.getElementById("google-link");
 let log_in = document.getElementById("go-to-log-in");
-let new_file = document.getElementById("userpicture");
-let reader = new FileReader();
-if ((contador_usuarios = localStorage.getItem("contador_usuarios")) == undefined) {
-    contador_usuarios = 0;
+//let new_file = document.getElementById("userpicture");
+//let reader = new FileReader();
+if ((user_counter = localStorage.getItem("user_counter")) == undefined) {
+    user_counter = 0;
 }
 
 facebook.addEventListener("click", function() {
-    window.open("http://www.facebook.com", "_self");
+    window.open("http://www.facebook.com");
 });
 
 google.addEventListener("click", function() {
-    window.open("http://www.google.com", "_self");
+    window.open("http://www.google.com");
 });
 
 log_in.addEventListener("click", function() {
     window.open("log-in-form.html", "_self");
 });
 
-new_file.addEventListener("change", function(e) {
+/*new_file.addEventListener("change", function(e) {
     foto_seleccionada = e.currentTarget.files.length;
     if (foto_seleccionada != 0) {
         reader.addEventListener("load", function(e) {
-            localStorage.setItem("userpicture_"+(parseInt(contador_usuarios)+1).toString(), e.target.result);
+            localStorage.setItem("userpicture_"+(parseInt(user_counter)+1).toString(), e.target.result);
         });
         reader.readAsDataURL(new_file.files[0]);
     }
-});
+});*/
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -36,22 +36,19 @@ form.addEventListener("submit", function(e) {
     email = document.getElementById("useremail");
     try {
         if (checkPassword(password.value) && checkEmail(email.value)) {
-            for (var i = 0; i < contador_usuarios; i++) {
+            for (var i = 0; i < user_counter; i++) {
                 if (localStorage.getItem("email_"+(i+1).toString()) == email.value) {
-                    alert("Ya existe una account asociada a la account " + email.value);
+                    alert("There is already an account associated to " + email.value);
                     return;
                 }
             }
-            contador_usuarios++;
-            localStorage.setItem("contador_usuarios", contador_usuarios);
-            localStorage.setItem("username_"+contador_usuarios.toString(), document.getElementById("username").value);
-            localStorage.setItem("password_"+contador_usuarios.toString(), document.getElementById("pswd").value);
-            localStorage.setItem("name_"+contador_usuarios.toString(), document.getElementById("name").value);
-            localStorage.setItem("surname1_"+contador_usuarios.toString(), document.getElementById("surname1").value); 
-            localStorage.setItem("surname2_"+contador_usuarios.toString(), document.getElementById("surname2").value); 
-            localStorage.setItem("email_"+contador_usuarios.toString(), document.getElementById("useremail").value); 
-            localStorage.setItem("birthdate_"+contador_usuarios.toString(), document.getElementById("birthdate").value);
-            //localStorage.setItem("userpicture_"+contador_usuarios.toString(), document.getElementById("userpicture").files[0].name);
+            user_counter++;
+            localStorage.setItem("user_counter", user_counter);
+            localStorage.setItem("password_"+user_counter.toString(), document.getElementById("pswd").value);
+            localStorage.setItem("name_"+user_counter.toString(), document.getElementById("name").value);
+            localStorage.setItem("surname_"+user_counter.toString(), document.getElementById("surname").value); 
+            localStorage.setItem("email_"+user_counter.toString(), document.getElementById("useremail").value); 
+            alert("Thanks for joining BudgetPro!");
             window.open("log-in-form.html", "_self");
         }
     } catch (error) {
@@ -60,14 +57,18 @@ form.addEventListener("submit", function(e) {
 });
 
 function checkPassword(password) {
-    var pattern = /[0-9a-zA-Z]{8,}/;
+    var pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
     if (pattern.test(password)) {
         return true;
     } else {
         if(password.length < 8) {
-            alert("Introduca una contraseña con un mínimo de 8 caracteres");
-        } else {
-            alert("Introduzca una contraseña con las letras a-z y los números 0-9");
+            alert("The password must be at least 8 characters long");
+        /*} else if () { 
+            alert("The password must contain at least one number");
+        } else if () {
+            alert("The password must contain at least one special character");
+        */} else {
+            alert("The password cannot contain spaces or the special characters /:?'<>|");
         }
     }
     return false;
@@ -78,7 +79,7 @@ function checkEmail(email) {
     if (pattern.test(email)){
         return true;
     } else {
-        alert("Introduca una email con el formato nombre@dominio.extensión");
+        alert("Enter an email with the format name@domain.extension");
     }
     return false;
 }

@@ -37,6 +37,10 @@ input{
     text-align: center;
 }
 
+.form {
+    margin-top: 5%;
+}
+
 .input-field{
     max-width: 380px;
     width: 100%;
@@ -133,6 +137,7 @@ input{
     cursor: pointer;
     transition:0.5s;
 }
+
 .btnsolid{
     max-width: 380px;
     width: 100%;
@@ -165,6 +170,11 @@ input{
 .txt a{
     color: white;
 }
+
+#go-to-sign-up {
+    cursor: pointer;
+}
+
 /* MEDIA QUERIES */
 
 /* Tablet */
@@ -202,7 +212,7 @@ input{
     }
 }
 
-/* Movil */
+/* Smartphone */
 
 @media (max-width: 480px) {
     body{
@@ -237,9 +247,5 @@ input{
 
     a {
         left: 5%;
-    }
-
-    #politicas {
-        display:none;
     }
 }

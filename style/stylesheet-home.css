@@ -1,0 +1,30 @@
+/*.hecho_para_ti, .top_playlists, .top_escuchados {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    margin-left: 7%;
+}
+
+.top_escuchados {
+    margin-bottom: 10%;
+}*/
+
+/* MEDIA QUERIES */
+
+/* Tablet */
+
+@media (min-width: 481px) and (max-width: 900px) {
+    /*.top_escuchados {
+        margin-bottom: 20%;
+    }*/
+}
+
+/* Smartphone */
+
+@media (max-width: 480px) {
+    /*.top_escuchados {
+        margin-bottom: 30%;
+    }*/
+}

@@ -1,28 +1,28 @@
-let foto_perfil = document.getElementById("foto-perfil");
-let cerrar_sesion = document.getElementById("cerrar-sesion-text");
+let profile_picture = document.getElementById("profile-picture");
+let log_out = document.getElementById("log-out-text");
 let account = document.getElementById("account-text");
-let perfil = document.getElementById("perfil-text");
-let user_actual = localStorage.getItem("user_actual");
+let profile = document.getElementById("profile-text");
+let current_user = localStorage.getItem("current_user");
 
 
 
-/* Para actualizar la foto de perfil si el usario la cambia */
+/* Update profile picture when user changes it */
 setInterval(function() {
-    foto_perfil.src = localStorage.getItem("userpicture_"+user_actual.toString());
+    profile_picture.src = localStorage.getItem("userpicture_"+current_user.toString());
 }, 1);
 
-/* Para mostrar el popup cuando el usuario clica en la foto de perfil */
-foto_perfil.addEventListener("click", function() {
+/* Show the pop-up when the user clicks on the profile picture */
+profile_picture.addEventListener("click", function() {
     var popup = document.getElementById("popup_perfil");
-    var contenidos_popup = document.querySelectorAll("#account-text, #perfil-text, #cerrar-sesion-text");
-    popup.classList.toggle("mostrar");
-    contenidos_popup.forEach((opcion) => {
-        opcion.classList.toggle("mostrar");
+    var popup_contents = document.querySelectorAll("#account-text, #profile-text, #log-out-text");
+    popup.classList.toggle("show");
+    popup_contents.forEach((option) => {
+        option.classList.toggle("show");
     });
 });
 
-cerrar_sesion.addEventListener("click", function() {
-    var response = confirm("¿Estás seguro de que deseas cerrar sesión?");
+log_out.addEventListener("click", function() {
+    var response = confirm("Are you sure you want to log out?");
     if (response) {
         window.open("index.html", "_self");
     }
@@ -32,6 +32,6 @@ account.addEventListener("click", function() {
     window.open("account.html", "_self");
 });
 
-perfil.addEventListener("click", function() {
-    window.open("perfil.html", "_self");
+profile.addEventListener("click", function() {
+    window.open("profile.html", "_self");
 });

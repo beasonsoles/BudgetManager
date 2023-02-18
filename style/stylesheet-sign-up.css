@@ -19,7 +19,7 @@ input{
 
 #main-container-sign-up{
     width: 500px;
-    height: 850px;
+    height: 650px;
     background-color: #333333;
     margin: auto;
     margin-top: 2vh;
@@ -33,6 +33,7 @@ input{
     font-size: 2.2rem;
     color: white;
     text-align: center;
+    padding-bottom: 3%;
 }
 .input-field{
         max-width: 500px;
@@ -81,7 +82,7 @@ input{
     font-weight: 500;
 }
 
-#main-container-sign-up p{
+#main-container-sign-up p {
     text-align: center;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -199,6 +200,10 @@ p, #condiciones {
     color: white;
 }
 
+#go-to-log-in {
+    cursor: pointer;
+}
+
 /* MEDIA QUERIES */
 
 /* Tablet */
@@ -236,7 +241,7 @@ p, #condiciones {
     }
 }
 
-/* Movil */
+/* Smartphone */
 
 @media (max-width: 480px) {
     #main-container-sign-up {
