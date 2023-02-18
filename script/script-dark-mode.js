@@ -27,7 +27,7 @@ setInterval(function() {
     else if (window.innerWidth < 480) { x = 12;} // smartphone
     else { x = 20;} // laptop
     if (theme_actual == "light") {
-        // change website's colors
+        // change website's colors to dark colors
         document.body.style.backgroundColor = "rgb(224, 224, 224)";
         budget_brand_name.style.color = "black";
         header.style.background = "rgb(117, 117, 117)";
@@ -51,14 +51,14 @@ setInterval(function() {
         if ((footer = document.getElementById("footer")) != undefined) {
             footer.style.backgroundColor = "rgb(117, 117, 117)";
         }
-        // change switch state
+        // change switch state to off
         if (sliding_button != null && sliding_circle != null) {
             sliding_button.style.background = "rgb(78, 218, 39)";
             sliding_circle.style.background = "black";
             sliding_circle.style.transform = "translateX("+x.toString()+"px)";
         }
     } else {
-        // change colores de la página
+        // change website's colors to light colors
         document.body.style.backgroundColor = "rgb(43, 43, 43)";
         budget_brand_name.style.color = "white";
         header.style.background = "black";
@@ -82,7 +82,7 @@ setInterval(function() {
         if ((footer = document.getElementById("footer")) != undefined) {
             footer.style.backgroundColor = "black";
         }
-        // change el estado del switch
+        // change switch state to on
         if (sliding_button != null && sliding_circle != null) {
             sliding_button.style.background = "rgb(134, 140, 133)";
             sliding_circle.style.background = "white";

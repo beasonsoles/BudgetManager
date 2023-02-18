@@ -63,11 +63,11 @@ function checkPassword(password) {
     } else {
         if(password.length < 8) {
             alert("The password must be at least 8 characters long");
-        /*} else if () { 
+        } else if () { 
             alert("The password must contain at least one number");
         } else if () {
             alert("The password must contain at least one special character");
-        */} else {
+        } else {
             alert("The password cannot contain spaces or the special characters /:?'<>|");
         }
     }
