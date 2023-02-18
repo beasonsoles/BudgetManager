@@ -48,7 +48,7 @@ form.addEventListener("submit", function(e) {
             localStorage.setItem("name_"+user_counter.toString(), document.getElementById("name").value);
             localStorage.setItem("surname_"+user_counter.toString(), document.getElementById("surname").value); 
             localStorage.setItem("email_"+user_counter.toString(), document.getElementById("useremail").value); 
-            alert("Thanks for joining BudgetPro!");
+            alert("Thanks for joining BudgetPro!\nClick OK to be redirected to the log in page");
             window.open("log-in-form.html", "_self");
         }
     } catch (error) {
@@ -57,18 +57,20 @@ form.addEventListener("submit", function(e) {
 });
 
 function checkPassword(password) {
-    var pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+    var pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!?@#$%^&*.+-()]{8,}$/;
     if (pattern.test(password)) {
         return true;
     } else {
+        one_number_pattern = /\d/;
+        one_special_char_pattern = /\W/;
         if(password.length < 8) {
             alert("The password must be at least 8 characters long");
-        } else if () { 
+        } else if (!one_number_pattern.test(password)) { 
             alert("The password must contain at least one number");
-        } else if () {
+        } else if (!one_special_char_pattern.test(password)) {
             alert("The password must contain at least one special character");
         } else {
-            alert("The password cannot contain spaces or the special characters /:?'<>|");
+            alert("The password cannot contain spaces or the special characters /:'<>|=ºª´`");
         }
     }
     return false;
