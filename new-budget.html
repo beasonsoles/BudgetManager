@@ -63,20 +63,37 @@
           </div>
         </div>
       </nav>
+        
+        <!-- columna derecha-->
+        <main class="derecha" id="main_container">
+            <div class="contenido">
+                <form id="crear_playlist">
+                    <input type="file" id="subir_foto" accept=".jpg, .jpeg, .png">
+                    <label for="subir_foto" id="edit">
+                        <img src="images/edit.png" id="edit_icon" alt="edit foto de la playlist">
+                    </label>
+                    <div class="nombre_playlist">
+                        <h2 class="subtitulos">Dale un nombre a tu playlist</h2><br>
+                        <input type="text" id="nombre" placeholder=" Mi Playlist" required>
+                    </div><br>
+                    <p class="texto1" id="confirmacion1">Tu foto ha sido guardada</p>
+                    <div class="add">
+                        <h2 class="subtitulos">Añade canciones</h2><br>
+                        <input type="text" placeholder="  Nombre de la canción" id="cancion_playlist">
+                        <input type="button" id="boton_anadir_cancion" value="Añadir">
+                        <p class="texto2" id="confirmacion2">La canción ha sido añadida</p>
+                    </div>
+                    <input type="submit" value="Guardar" id="enviar">
+                    <input type="reset" value="Cancelar" id="cancelar">          
+                </div>
+            </div>
+        </main>
 
-      <main class="right" id="main-container">
-
-      </main>
-
-      <div class="bottom" id="footer">
-        <footer>
-        </footer>
-      </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="script/script-home.js"></script>
-      <script src="script/script-popup.js"></script>
-      <script src="script/script-menu.js"></script>
-      <!--<script src="script/script-buscador.js"></script>-->
-      <script src="script/script-dark-mode.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="script/script_crear_playlist.js"></script>
+        <script src="script/script_popup.js"></script>
+        <script src="script/script_menu.js"></script>
+        <script src="script/script_buscador.js"></script>
+        <script src="script/script_dark_mode.js"></script>
     </body>
 </html>

@@ -20,7 +20,6 @@ html {
     position: relative;
     bottom: 10%;
     left: 2%;
-    width: 3%;
 }
 
 #budget-logo {
@@ -99,7 +98,7 @@ html {
     cursor: pointer;
 }
 
-#home-icon, #library-icon, #create-icon, #favorito-icon, #settings-icon {
+#home-icon, #budgets-icon, #create-icon, #settings-icon {
     width: 25px;
     height: 25px;
     filter: invert(100%);
@@ -110,17 +109,12 @@ html {
     font-size: x-large;
 }
 
-#library, #library-icon {
+#budgets, #budgets-icon {
     display: inline;
     font-size: x-large;
 }
 
 #create, #create-icon {
-    display: inline;
-    font-size: x-large;
-}
-
-#favorito, #favorito-icon {
     display: inline;
     font-size: x-large;
 }
@@ -147,11 +141,6 @@ html {
     margin-left: 7%;
 }
 
-.info {
-    position: fixed;
-    left: 2%;
-}
-
 a {
     color: white;
 }
@@ -174,12 +163,8 @@ a {
         height: fit-content;
     }
 
-    .left {
-        width: 30%;
-    }
-
-    .info{
-        left:1%;
+    #menu-container {
+        width: 25%;
     }
 
     .register{
@@ -248,19 +233,12 @@ a {
         display: inline-table;
     }
     
-    #budget-brand-name, #home, #library, #create, #favorito, #settings {
+    #budget-brand-name, #home, #budgets, #create, #favorito, #settings {
         display: none;
     }
 
     [id*="option"] {
         width: 35px;
-    }
-
-    .info {
-        position: fixed;
-        font-size: x-small;
-        padding: 2%;
-
     }
 
     .subtitle {

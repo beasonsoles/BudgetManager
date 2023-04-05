@@ -3,8 +3,8 @@ let header = document.getElementById("header");
 let budget_brand_name = document.getElementById("budget-brand-name");
 let texts = document.querySelectorAll(".subtitle, .subtitles");
 let menu = document.getElementById("menu-container");
-let contents_menu = document.querySelectorAll("#home, #library, #create, #favorito, #settings");
-let images_menu = document.querySelectorAll("#home-icon, #library-icon, #create-icon, #favorito-icon, #settings-icon");
+let contents_menu = document.querySelectorAll("#home, #budgets, #create, #favorito, #settings");
+let images_menu = document.querySelectorAll("#home-icon, #budgets-icon, #create-icon, #favorito-icon, #settings-icon");
 let main = document.getElementById("main-container");
 let sliding_button = document.getElementsByClassName("sliding-button")[0];
 let sliding_circle = document.getElementById("circle");
@@ -68,7 +68,7 @@ setInterval(function() {
         contents_menu.forEach(function(option) {option.style.color = "white";});
         images_menu.forEach(function(image) {image.style.filter = "invert(100%)";});
         if ((data_container = document.getElementById("data-container")) != undefined) {
-            container.style.background = "black";
+            data_container.style.background = "black";
         }
         if ((create_playlist = document.getElementById("create-playlist")) != undefined) {
             create_playlist.style.background = "black";

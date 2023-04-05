@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <!-- Hoja de estilo usada de la pagina web -->  
+        <link rel="stylesheet" href="style/hojaestilo_regiones.css">
+        <link rel="stylesheet" href="style/hojaestilo_biblioteca.css">
+        <link rel="stylesheet" href="style/hojaestilo_popup.css">
+        <link rel="stylesheet" href="style/hojaestilo_boton_cambiar_tema.css">
+        <link rel="icon" type="image/x-icon" href="images/logo_musify.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="UTF-8" />
+        <meta name="Musify"  />
+        <html lang="es">
+        <title>Musify</title>
+        
+    </head>
+
+    <body>
+        <header>
+            <div class="cabecera" id="header">
+                <img id="musify_icon" src="images/logo_musify.png" alt="Musify Logo">
+                <div id="musify_texto"><h1>Musify</h1></div>
+                <input type="search" placeholder="Buscar" id="buscador">
+                <img id="foto_perfil" src="images/perfil_vacio.png" alt="Foto Perfil">
+            </div><br>
+
+            <div class="popup" id="popup_perfil">
+                <div class="container" id="popup_container">
+                    <br>
+                    <button class="cuenta" id="cuenta_text">Cuenta</button><br>
+                    <button class="perfil" id="perfil_text">Perfil</button><br>
+                    <button class="cerrar_sesion" id="cerrar_sesion_text">Cerrar sesión</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- columna izquierda-->
+        <nav class="izquierda" id="menu_container">
+            <div class="menu">
+                <div id="opcion1">
+                    <img id="home_icon" src="images/home.png" alt="Home">
+                    <div id="home">Home</div>
+                </div><br>
+                <div id="opcion2">
+                    <img id="biblioteca_icon" src="images/biblioteca.png" alt="Biblioteca">
+                    <div id="biblioteca">Biblioteca</div>
+                </div><br>
+                <div id="opcion3">
+                    <img id="crear_icon" src="images/crear.png" alt="Crear">
+                    <div id="crear">Playlist</div>
+                </div><br>
+                <div id="opcion4">
+                    <img id="favorito_icon" src="images/favorito.png" alt="Favorito">
+                    <div id="favorito">Favoritos</div>
+                </div><br>
+                <div id="opcion5">
+                    <img id="ajustes_icon" src="images/ajustes.png" alt="Ajustes">
+                    <div id="ajustes">Ajustes</div>
+                </div>
+                <div class=popup_cambiar_tema id="cambiar_tema">
+                    <div class="container_claro" id="cambiar_tema_container"><br>
+                    <label class="interruptor" id="interruptor_modo_oscuro">
+                        <input type="checkbox">
+                        <span class="boton_deslizante" id="circulo_deslizante"><div id="circulo"></div></span>
+                    </label>
+                    <div class="tema_claro_texto">Tema claro</div>
+                    </div>
+                </div>
+            </div>
+            <div id="politicas">
+                <div id="privacidad" class="info"><a id="privacidad_texto">Politica de privacidad</a></div><br>
+                <div id="cookies" class="info"><a id="cookies_texto">Politica de cookies</a></div>
+            </div>
+        </nav>
+        
+        <!-- columna derecha-->
+        <main class="derecha" id="main_container">
+            <div class="contenido">
+                <h2 class="subtitulo">Tus playlists</h2>
+                <div id="tus_playlists"></div>
+            </div>
+        </main>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="script/script_popup.js"></script>
+        <script src="script/script_menu.js"></script>
+        <script src="script/script_biblioteca.js"></script>
+        <script src="script/script_buscador.js"></script>
+        <script src="script/script_dark_mode.js"></script>
+    </body>
+</html>

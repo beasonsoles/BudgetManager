@@ -8,12 +8,18 @@ let current_user = localStorage.getItem("current_user");
 
 /* Update profile picture when user changes it */
 setInterval(function() {
-    profile_picture.src = localStorage.getItem("userpicture_"+current_user.toString());
+    if ((profile = localStorage.getItem("userpicture_"+current_user.toString())) != undefined)
+    {
+        profile_picture.src = profile;
+    } else {
+        profile_picture.src = "images/empty-profile.png";
+    }
+     
 }, 1);
 
 /* Show the pop-up when the user clicks on the profile picture */
 profile_picture.addEventListener("click", function() {
-    var popup = document.getElementById("popup_perfil");
+    var popup = document.getElementById("profile-popup");
     var popup_contents = document.querySelectorAll("#account-text, #profile-text, #log-out-text");
     popup.classList.toggle("show");
     popup_contents.forEach((option) => {

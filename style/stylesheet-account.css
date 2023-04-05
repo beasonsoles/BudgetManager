@@ -39,6 +39,7 @@ h3 {
     top: 15%;
     width: 150px;
     height: 150px;
+    cursor: pointer;
 }
 
 #user-profile-picture:hover {
@@ -53,6 +54,7 @@ h3 {
     left: 40%;
     color:white;
     background-color:rgb(20, 145, 241);
+    cursor: pointer;
 }
 
 /* MEDIA QUERIES */

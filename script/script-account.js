@@ -10,7 +10,11 @@ setInterval(function() {
     document.form.name.value = localStorage.getItem("name_"+current_user.toString());
     document.form.surname.value = localStorage.getItem("surname_"+current_user.toString());
     document.form.useremail.value = localStorage.getItem("email_"+current_user.toString());
-    user_profile.src = localStorage.getItem("userpicture_"+current_user.toString());
+    if ((profile = localStorage.getItem("userpicture_"+current_user.toString())) != undefined) {
+        user_profile.src = profile;
+    } else {
+        user_profile.src = "images/empty-profile.png";
+    }
 }, 1);
 
 /* Change profile picture if the user selects a new one */
@@ -47,7 +51,7 @@ form_account.addEventListener("submit", function(e) {
 });
 
 function checkPassword(password) {
-    var pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!?@#$%^&*.+-()]{8,}$/;
+    var pattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!?@#$%^&*.+()]{8,}$/;
     if (pattern.test(password)) {
         return true;
     } else {

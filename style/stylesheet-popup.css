@@ -1,0 +1,146 @@
+#searchbar {
+    position: absolute;
+    right: 7%;
+    width: 20%;
+    top: 40%;
+    border-radius: 5px;
+}
+
+#profile-picture {
+    position: absolute;
+    right: 2%;
+    top: 25%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    border-radius: 6px;
+    right: 1%;
+    top: 12%;
+    width: 25%;
+    height: 60%;
+    z-index: 3;
+}
+
+.container {
+    position: relative;
+    border-radius: 6px;
+    right: 1%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+.container:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.account, .profile, .log-out {
+    display: none;
+    position: relative;
+    border-radius: 6px;
+    font-size: large;
+    width: 90%;
+    height: 20%;
+    left: 5%;
+    color: black;
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.account, .profile {
+    background-color: rgb(128, 174, 115);
+}
+
+.log-out {
+    background-color: rgb(219, 95, 89);
+}
+
+.account:hover, .profile:hover {
+    transform: scale(1.02);
+    background-color: rgb(116, 201, 93);
+    cursor: pointer;
+}
+
+.log-out:hover {
+    transform: scale(1.02);
+    background-color: rgb(236, 53, 53);
+    cursor: pointer;
+}
+
+.show {
+    display: block;
+    animation: appear 0.5s;
+}
+  
+@keyframes appear {
+    from {opacity: 0;} to {opacity:1 ;}
+}
+
+/* MEDIA QUERIES */
+
+/* Tablet */
+
+@media (min-width: 481px) and (max-width: 900px) {
+    #searchbar {
+        right: 15%;
+        width: 40%;
+    }
+
+    #profile-picture {
+        top: 25%;
+        right: 5%;
+    }
+
+    .popup {
+        width: 30%;
+        height: 40%;
+        top: 8%;
+    }
+
+    .container {
+        height: 50%;
+    }
+
+    .account, .profile, .log-out {
+        height: 15%;
+    }
+}
+
+/* Movil */
+
+@media (max-width: 480px) {
+    #profile-picture {
+        top: 25%;
+        right: 5%;
+        width: 40px;
+        height: 40px;
+    }
+
+    #searchbar {
+        right: 20%;
+        top: 35%;
+        width: 40%;
+    }
+
+    .popup {
+        width: 40%;
+        height: 40%;
+        top: 8%;
+    }
+
+    .container {
+        height: 60%;
+    }
+
+    .account, .profile, .log-out {
+        height: 15%;
+    }
+}
