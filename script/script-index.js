@@ -5,7 +5,7 @@ let home = document.getElementById("option1");
 let budgets = document.getElementById("option2");
 let playlist = document.getElementById("option3");
 let favoritos = document.getElementById("option4");
-let settings = document.getElementById("option5");
+let settings = document.getElementById("option4");
 let ad = document.getElementById("go-to-sign-up");
 
 sign_up.addEventListener("click", function() {

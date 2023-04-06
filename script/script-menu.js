@@ -3,7 +3,7 @@ let home = document.getElementById("option1");
 let budgets = document.getElementById("option2");
 let new_budget = document.getElementById("option3");
 //let favoritos = document.getElementById("option4");
-let settings = document.getElementById("option5");
+let settings = document.getElementById("option4");
 
 home.addEventListener("click", function() {
     window.open("home.html", "_self");
@@ -14,7 +14,7 @@ budgets.addEventListener("click", function() {
 });
 
 new_budget.addEventListener("click", function() {
-    window.open("new-budget.html", "_self");
+    window.open("new-expense.html", "_self");
 });
 
 /*favoritos.addEventListener("click", function() {

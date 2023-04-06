@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="style/stylesheet-regions.css">
         <link rel="stylesheet" href="style/stylesheet-home.css">
+        <link rel="stylesheet" href="style/stylesheet-new-expense.css">
         <link rel="stylesheet" href="style/stylesheet-popup.css">
         <link rel="stylesheet" href="style/stylesheet-change-theme-button.css">
         <link rel="icon" type="image/x-icon" href="images/budget-management-logo.png">
@@ -18,7 +19,6 @@
         <div class="top" id="header">
           <img id="budget-logo" src="images/budget-management-logo.png" alt="Budget Buddy Logo">
           <div id="budget-brand-name"><h1>Budget Buddy</h1></div>
-          <!--<input type="search" placeholder="Search" id="buscador">-->
           <img id="profile-picture" src="images/empty-profile.png" alt="Profile Picture">
         </div><br>
         <div class="popup" id="profile-popup">
@@ -44,10 +44,6 @@
               <img id="create-icon" src="images/create.png" alt="New expense">
               <div id="create">New expense</div>
           </div><br>
-          <!--<div id="option4">
-              <img id="favorito-icon" src="images/favorito.png" alt="Favorito">
-              <div id="favorito">Favoritos</div>
-          </div><br>-->
           <div id="option4">
               <img id="settings-icon" src="images/settings.png" alt="Settings">
               <div id="settings">Settings</div>
@@ -66,15 +62,53 @@
         
       <main class="right" id="main-container">
           <div class="content">
-              <h2 class="subtitulo">Tus playlists</h2>
-              <div id="tus_playlists"></div>
+              <form id="new-expense">
+                  <div class="expense-name">
+                      <h2 class="subtitles">Add your expense</h2><br>
+                      <p id="dollars">$</p>
+                      <input type="number" id="expense-quantity" placeholder=" Amount" required>
+                  </div>
+                  <div class="category">
+                      <h2 class="subtitles">Select a category</h2><br>
+                      <select name="categories" id="categories" required>
+                        <option value="automobile/transportation">Automobile/Transportation</option>
+                        <option value="bills/utilities">Bills/Utilities</option>
+                        <option value="business">Business</option>
+                        <option value="education">Education</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="food">Food</option>
+                        <option value="gifts/donations">Gifts/Donations</option>
+                        <option value="health/fitness">Health/Fitness</option>
+                        <option value="home">Home</option>
+                        <option value="income">Income</option>
+                        <option value="kids">Kids</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="travel">Travel</option>
+                        <option value="other">Other</option>
+                      </select>
+                  </div>
+                  <div class="reset-expense">
+                    <h2 class="subtitles">Set a reset period</h2>
+                    <h3 class="info">(If the expense is recurrent)</h3><br>
+                    <select name="reset-period" id="reset-period" required>
+                      <option value="none">None</option>
+                      <option value="daily">Daily</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="monthly">Monthly</option>
+                      <option value="quarterly">Quarterly</option>
+                      <option value="yearly">Yearly</option>
+                    </select>
+                </div>
+                  <input type="submit" value="Save" id="send">
+                  <input type="reset" value="Cancel" id="cancel">          
+              </div>
           </div>
       </main>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="script/script-new-expense.js"></script>
       <script src="script/script-popup.js"></script>
       <script src="script/script-menu.js"></script>
-      <script src="script/script-budgets.js"></script>
       <script src="script/script-dark-mode.js"></script>
     </body>
 </html>
