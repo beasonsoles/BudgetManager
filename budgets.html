@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="style/stylesheet-regions.css">
         <link rel="stylesheet" href="style/stylesheet-home.css">
         <link rel="stylesheet" href="style/stylesheet-popup.css">
+        <link rel="stylesheet" href="style/stylesheet-budgets.css">
         <link rel="stylesheet" href="style/stylesheet-change-theme-button.css">
         <link rel="icon" type="image/x-icon" href="images/budget-management-logo.png">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,7 +18,7 @@
       <header>
         <div class="top" id="header">
           <img id="budget-logo" src="images/budget-management-logo.png" alt="Budget Buddy Logo">
-          <div id="budget-brand-name"><h1>Budget Buddy</h1></div>
+          <h1 id="budget-brand-name">Budget Buddy</h1>
           <!--<input type="search" placeholder="Search" id="buscador">-->
           <img id="profile-picture" src="images/empty-profile.png" alt="Profile Picture">
         </div><br>
@@ -44,10 +45,6 @@
               <img id="create-icon" src="images/create.png" alt="New expense">
               <div id="create">New expense</div>
           </div><br>
-          <!--<div id="option4">
-              <img id="favorito-icon" src="images/favorito.png" alt="Favorito">
-              <div id="favorito">Favoritos</div>
-          </div><br>-->
           <div id="option4">
               <img id="settings-icon" src="images/settings.png" alt="Settings">
               <div id="settings">Settings</div>
@@ -66,8 +63,65 @@
         
       <main class="right" id="main-container">
           <div class="content">
-              <h2 class="subtitulo">Tus playlists</h2>
-              <div id="tus_playlists"></div>
+              <h2 class="subtitle">Your budgets</h2>
+              <div class="budget-container">
+                <div id="transport-budget">
+                  <img class="budget-image" src="images/transport.png" alt="Automobile/Transport budget image">
+                  <h3 class="budget-name">Automobile/Transportation</h3>
+                </div>
+                <div id="bills-budget">
+                  <img class="budget-image" src="images/bills.png" alt="Bills/Utilities budget image">
+                  <h3 class="budget-name">Bills/Utilities</h3>
+                </div>
+                <div id="business-budget">
+                  <img class="budget-image" src="images/business.png" alt="Business budget image">
+                  <h3 class="budget-name">Business</h3>
+                </div>
+                <div id="education-budget">
+                  <img class="budget-image" src="images/education.png" alt="Education budget image">
+                  <h3 class="budget-name">Education</h3>
+                </div>
+                <div id="entertainment-budget">
+                  <img class="budget-image" src="images/entertainment.png" alt="Entertainment budget image">
+                  <h3 class="budget-name">Entertainment</h3>
+                </div>
+                <div id="food-budget">
+                  <img class="budget-image" src="images/food.png" alt="Food budget image">
+                  <h3 class="budget-name">Food</h3>
+                </div>
+                <div id="gifts-budget">
+                  <img class="budget-image" src="images/gifts.png" alt="Gifts/Donations budget image">
+                  <h3 class="budget-name">Gifts/Donations</h3>
+                </div>
+                <div id="health-budget">
+                  <img class="budget-image" src="images/health.png" alt="Health/Fitness budget image">
+                  <h3 class="budget-name">Health/Fitness</h3>
+                </div>
+                <div id="home-budget">
+                  <img class="budget-image" src="images/home_budget.png" alt="Home budget image">
+                  <h3 class="budget-name">Home</h3>
+                </div>
+                <div id="income-budget">
+                  <img class="budget-image" src="images/income.png" alt="Income budget image">
+                  <h3 class="budget-name">Income</h3>
+                </div>
+                <div id="kids-budget">
+                  <img class="budget-image" src="images/kids.png" alt="Kids budget image">
+                  <h3 class="budget-name">Kids</h3>
+                </div>
+                <div id="shopping-budget">
+                  <img class="budget-image" src="images/shopping.png" alt="Shopping budget image">
+                  <h3 class="budget-name">Shopping</h3>
+                </div>
+                <div id="travel-budget">
+                  <img class="budget-image" src="images/travel.png" alt="Travel budget image">
+                  <h3 class="budget-name">Travel</h3>
+                </div>
+                <div id="other-budget">
+                  <img class="budget-image" src="images/other.png" alt="Other budget image">
+                  <h3 class="budget-name">Other</h3>
+                </div>
+              </div>
           </div>
       </main>
 

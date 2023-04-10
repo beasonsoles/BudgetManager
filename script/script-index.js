@@ -1,10 +1,9 @@
-/* Para avisar al usuario que debe sign-in sesión para acceder a las funciones del menu */
+/*Inform the user that signing in is necessary to access the app */
 let sign_up = document.getElementById("sign-up");
-let log_in = document.getElementById("sign-in");
+let log_in = document.getElementById("log-in");
 let home = document.getElementById("option1");
 let budgets = document.getElementById("option2");
 let playlist = document.getElementById("option3");
-let favoritos = document.getElementById("option4");
 let settings = document.getElementById("option4");
 let ad = document.getElementById("go-to-sign-up");
 
@@ -21,19 +20,15 @@ home.addEventListener("click", function() {
 });
 
 budgets.addEventListener("click", function() {
-    alert("Sign in or sign up to access your...");
+    alert("Log in or sign up to access your...");
 });
 
 playlist.addEventListener("click", function() {
-    alert("Sign in or sign up to access your...");
-});
-
-favoritos.addEventListener("click", function() {
-    alert("Sign in or sign up to access your...");
+    alert("Log in or sign up to access your...");
 });
 
 settings.addEventListener("click", function() {
-  alert("Sign in or sign up to access your...");
+  alert("Log in or sign up to access your...");
 });
 
 ad.addEventListener("click", function() {

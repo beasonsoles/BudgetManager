@@ -10,7 +10,7 @@ function add_playlist(foto_playlist_anadida, expense_name_anadida) {
     playlist.classList.add("playlist");
     foto.classList.add("musica");
     descripcion.classList.add("descripcion");
-    name.classList.add("expense-name");
+    name.classList.add("expense-amount");
     // crear la estructura usando appendChild
     document.getElementById("tus_playlists").appendChild(playlist);
     playlist.appendChild(foto);
@@ -18,17 +18,17 @@ function add_playlist(foto_playlist_anadida, expense_name_anadida) {
     descripcion.appendChild(name);
     // dar valor a los elementos
     foto.src = foto_playlist_anadida;
-    name.innerHTML = expense-name_anadida;
+    name.innerHTML = expense-amount_anadida;
 }
 
 /* Para show las playlists que hayan sido creadas por el usuario */
 for (let i = 1; i <= budget_counter; i++) {
     var playlist_text = localStorage.getItem("playlist"+i.toString());
     var playlist_json = JSON.parse(playlist_text);
-    var expense_name_anadida = playlist_json.expense-name;
+    var expense_name_anadida = playlist_json.expense-amount;
     var foto_playlist_anadida = playlist_json.foto_playlist;
-    if (expense-name_anadida != "" && foto_playlist_anadida != "") {
-        add_playlist(foto_playlist_anadida, expense-name_anadida);
+    if (expense-amount_anadida != "" && foto_playlist_anadida != "") {
+        add_playlist(foto_playlist_anadida, expense-amount_anadida);
     }
 }
     

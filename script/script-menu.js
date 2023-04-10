@@ -2,7 +2,6 @@
 let home = document.getElementById("option1");
 let budgets = document.getElementById("option2");
 let new_budget = document.getElementById("option3");
-//let favoritos = document.getElementById("option4");
 let settings = document.getElementById("option4");
 
 home.addEventListener("click", function() {
@@ -16,10 +15,6 @@ budgets.addEventListener("click", function() {
 new_budget.addEventListener("click", function() {
     window.open("new-expense.html", "_self");
 });
-
-/*favoritos.addEventListener("click", function() {
-    window.open("favoritos.html", "_self");
-});*/
 
 settings.addEventListener("click", function() {
     var popup = document.getElementById("change-theme");

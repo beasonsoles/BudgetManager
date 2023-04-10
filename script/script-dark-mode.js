@@ -1,10 +1,10 @@
 let switch_theme = document.getElementById("switch-dark-mode");
 let header = document.getElementById("header");
 let budget_brand_name = document.getElementById("budget-brand-name");
-let texts = document.querySelectorAll(".subtitle, .subtitles");
+let texts = document.querySelectorAll(".subtitle, .subtitles, #title, #slogan, #create-budget-text");
 let menu = document.getElementById("menu-container");
-let contents_menu = document.querySelectorAll("#home, #budgets, #create, #favorito, #settings");
-let images_menu = document.querySelectorAll("#home-icon, #budgets-icon, #create-icon, #favorito-icon, #settings-icon");
+let contents_menu = document.querySelectorAll("#home, #budgets, #create #settings");
+let images_menu = document.querySelectorAll("#home-icon, #budgets-icon, #create-icon, #settings-icon");
 let main = document.getElementById("main-container");
 let sliding_button = document.getElementsByClassName("sliding-button")[0];
 let sliding_circle = document.getElementById("circle");

@@ -30,7 +30,7 @@ html {
     padding-top: 1%;
 }
 
-#budget-logo, #budget-brand-name, #buscador, #profile-picture {
+#budget-logo, #budget-brand-name, #profile-picture {
     display: inline-table;
 }
 
@@ -229,11 +229,11 @@ a {
         width: 13%;
     }
 
-    #budget-logo, #buscador, #profile-picture {
+    #budget-logo #profile-picture {
         display: inline-table;
     }
     
-    #budget-brand-name, #home, #budgets, #create, #favorito, #settings {
+    #budget-brand-name, #home, #budgets, #create, #settings {
         display: none;
     }
 
