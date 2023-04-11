@@ -3,7 +3,7 @@ h2, h3 {
     width: 100%;
 }
 
-#new-expense {
+#new-expense, #new-budget {
     background-color: black;
     border-radius: 6px;
     width: 90%;
@@ -12,7 +12,7 @@ h2, h3 {
     margin-left: 5%;
 }
 
-#expense-title {
+#expense-title, #budget-title {
     color: white;
     width: 100%;
     font-size: 250%;
@@ -20,13 +20,17 @@ h2, h3 {
     position: relative;
 }
 
-#expense-quantity, select {
+#expense-quantity, #budget-name-text, #budget-quantity, select {
     height: 40px;
     border-radius: 5px;
     font-size: large;
 }
 
-#expense-quantity {
+#budget-name-text {
+    width: 84%;
+}
+
+#expense-quantity, #budget-quantity {
     width: 83%;
 }
 
@@ -45,13 +49,17 @@ select {
     display: inline-block;
 }
 
+#budget-quantity, #dollars {
+    display: inline-block;
+}
+
 #category {
     position: relative;
     width: 70%;
     height: 50px;
 }
 
-.expense-amount, .category, .reset-expense {
+.expense-amount, .category, .reset-expense, .budget-name, .budget-amount, .reset-budget {
     padding: 2%;
     padding-top: 0;
     left: 7%;
@@ -84,14 +92,14 @@ select {
 /* Tablet */
 
 @media (min-width: 481px) and (max-width: 900px) {
-    #new-expense {
+    #new-expense, #new-budget {
         margin-top: 10%;
         margin-bottom: 2%;
         width: 90%;
     }
 
     
-    #expense-quantity {
+    #expense-quantity, #budget-quantity {
         width: 82%;
     }
     #send, #cancel {
@@ -109,17 +117,17 @@ select {
         width: 100%;
     }
 
-    #new-expense {
+    #new-expense, #new-budget {
         margin-top: 15%;
         margin-bottom: 2%;
         width: 90%;
     }
 
-    #expense-quantity {
+    #expense-quantity, #budget-quantity {
         width: 78%;
     }
 
-    #expense-quantity, select {
+    #expense-quantity, #budget-quality, select {
         height: 20px;
         font-size: small;
     }
@@ -128,7 +136,7 @@ select {
         font-size: small;
     }
 
-    .expense-amount {
+    .expense-amount, .budget-amount {
         top: 5%;
         padding: 2%;
     }

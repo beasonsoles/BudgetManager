@@ -1,5 +1,3 @@
-let titulos_base_datos = ["Moscow mule", "Demasiadas mujeres", "Bohemian rhapsody", "Waiting for love", "Sucker for pain", 
-"More than you know", "Kitt y los coches del pasado", "Boulevard of broken dreams", "Viva la vida", "Lagrimas de amor"];
 let form = document.getElementById("new-expense");
 if ((expense_counter = localStorage.getItem("expense_counter")) == undefined) {
     expense_counter = 0;

@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="style/stylesheet-regions.css">
         <link rel="stylesheet" href="style/stylesheet-home.css">
-        <link rel="stylesheet" href="style/stylesheet-new-expense.css">
+        <link rel="stylesheet" href="style/stylesheet-new-item.css">
         <link rel="stylesheet" href="style/stylesheet-popup.css">
         <link rel="stylesheet" href="style/stylesheet-change-theme-button.css">
         <link rel="icon" type="image/x-icon" href="images/budget-management-logo.png">
@@ -62,12 +62,16 @@
         
       <main class="right" id="main-container">
           <div class="content">
-              <form id="new-expense"><br>
-                  <h1 id="expense-title">Create a budget</h1>
-                  <div class="expense-amount">
-                      <h2 class="subtitles">Budget name. Budget amount</h2><br>
+              <form id="new-budget"><br>
+                  <h1 id="budget-title">Create a budget</h1>
+                  <div class="budget-name">
+                    <h2 class="subtitles">Budget name</h2><br>
+                    <input type="text" id="budget-name-text" placeholder=" Budget name" required>
+                  </div>
+                  <div class="budget-amount">
+                      <h2 class="subtitles">Budget amount</h2><br>
                       <p id="dollars">$</p>
-                      <input type="number" id="expense-quantity" placeholder=" Amount" required>
+                      <input type="number" id="budget-quantity" placeholder=" Budget amount" required>
                   </div>
                   <div class="category">
                       <h2 class="subtitles">Select a category</h2><br>
@@ -88,9 +92,9 @@
                         <option value="other">Other</option>
                       </select>
                   </div>
-                  <div class="reset-expense">
+                  <div class="reset-budget">
                     <h2 class="subtitles">Set a reset period</h2>
-                    <h3 class="info">(If the expense is recurrent)</h3><br>
+                    <h3 class="info">(If the budget is recurrent)</h3><br>
                     <select name="reset-period" id="reset-period" required>
                       <option value="none">None</option>
                       <option value="daily">Daily</option>
@@ -107,7 +111,7 @@
       </main>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="script/script-new-expense.js"></script>
+      <script src="script/script-new-budget.js"></script>
       <script src="script/script-popup.js"></script>
       <script src="script/script-menu.js"></script>
       <script src="script/script-dark-mode.js"></script>

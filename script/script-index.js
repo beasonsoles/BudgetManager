@@ -20,15 +20,15 @@ home.addEventListener("click", function() {
 });
 
 budgets.addEventListener("click", function() {
-    alert("Log in or sign up to access your...");
+    alert("Log in or sign up to access your budgets");
 });
 
 playlist.addEventListener("click", function() {
-    alert("Log in or sign up to access your...");
+    alert("Log in or sign up to create an expense");
 });
 
 settings.addEventListener("click", function() {
-  alert("Log in or sign up to access your...");
+  alert("Log in or sign up to access the settings");
 });
 
 ad.addEventListener("click", function() {
