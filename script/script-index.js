@@ -5,6 +5,7 @@ let home = document.getElementById("option1");
 let budgets = document.getElementById("option2");
 let playlist = document.getElementById("option3");
 let settings = document.getElementById("option4");
+let sign_up_button = document.getElementById("sign-up-button");
 let ad = document.getElementById("go-to-sign-up");
 
 sign_up.addEventListener("click", function() {
@@ -29,6 +30,10 @@ playlist.addEventListener("click", function() {
 
 settings.addEventListener("click", function() {
   alert("Log in or sign up to access the settings");
+});
+
+sign_up_button.addEventListener("click", function() {
+    window.open("sign-up-form.html", "_self");
 });
 
 ad.addEventListener("click", function() {

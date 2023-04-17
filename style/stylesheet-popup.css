@@ -1,7 +1,7 @@
 #searchbar {
     position: absolute;
-    right: 7%;
-    width: 20%;
+    right: 11%;
+    width: 15%;
     top: 40%;
     border-radius: 5px;
 }
@@ -14,6 +14,15 @@
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+#notification-bell {
+    position: absolute;
+    right: 7%;
+    top: 30%;
+    width: 40px;
+    height: 40px;
+    filter: invert(100%);
 }
 
 .popup {

@@ -1,9 +1,9 @@
 let switch_theme = document.getElementById("switch-dark-mode");
 let header = document.getElementById("header");
 let budget_brand_name = document.getElementById("budget-brand-name");
-let texts = document.querySelectorAll(".subtitle, .subtitles, #title, #slogan, #create-budget-text");
+let texts = document.querySelectorAll(".subtitle, .subtitles, #title, #slogan, #create-budget-text, #expense-title, #budget-title, #dollars, .info");
 let menu = document.getElementById("menu-container");
-let contents_menu = document.querySelectorAll("#home, #budgets, #create #settings");
+let contents_menu = document.querySelectorAll("#home, #budgets, #create, #settings");
 let images_menu = document.querySelectorAll("#home-icon, #budgets-icon, #create-icon, #settings-icon");
 let main = document.getElementById("main-container");
 let sliding_button = document.getElementsByClassName("sliding-button")[0];
@@ -20,13 +20,13 @@ switch_theme.addEventListener("change", function (e) {
 });
 
 setInterval(function() {
-    var theme_actual = localStorage.getItem("theme");
+    var curr_theme = localStorage.getItem("theme");
     // change switch button offset depending on the window size
     var x = 0;
     if (481 < window.innerWidth && window.innerWidth < 900) { x = 19;} // tablet
     else if (window.innerWidth < 480) { x = 12;} // smartphone
     else { x = 20;} // laptop
-    if (theme_actual == "light") {
+    if (curr_theme == "light") {
         // change website's colors to dark colors
         document.body.style.backgroundColor = "rgb(224, 224, 224)";
         budget_brand_name.style.color = "black";
@@ -39,14 +39,11 @@ setInterval(function() {
         if ((data_container = document.getElementById("data-container")) != undefined) {
             data_container.style.background = "rgb(150, 150, 150)";
         }
-        if ((create_playlist = document.getElementById("create-playlist")) != undefined) {
-            create_playlist.style.background = "rgb(150, 150, 150)";
+        if ((new_expense = document.getElementById("new-expense")) != undefined) {
+            new_expense.style.background = "rgb(150, 150, 150)";
         }
-        if ((confirmation1 = document.getElementById("confirmation1")) != undefined) {
-            confirmation1.style.color = "black";
-        }
-        if ((confirmation2 = document.getElementById("confirmation2")) != undefined) {
-            confirmation2.style.color = "black";
+        if ((new_budget = document.getElementById("new-budget")) != undefined) {
+            new_budget.style.background = "rgb(150, 150, 150)";
         }
         if ((footer = document.getElementById("footer")) != undefined) {
             footer.style.backgroundColor = "rgb(117, 117, 117)";
@@ -70,14 +67,11 @@ setInterval(function() {
         if ((data_container = document.getElementById("data-container")) != undefined) {
             data_container.style.background = "black";
         }
-        if ((create_playlist = document.getElementById("create-playlist")) != undefined) {
-            create_playlist.style.background = "black";
+        if ((new_expense = document.getElementById("new-expense")) != undefined) {
+            new_expense.style.background = "black";
         }
-        if ((confirmation1 = document.getElementById("confirmation1")) != undefined) {
-            confirmation1.style.color = "rgb(118, 218, 118)";
-        }
-        if ((confirmation2 = document.getElementById("confirmation2")) != undefined) {
-            confirmation2.style.color = "rgb(118, 218, 118)";
+        if ((new_budget = document.getElementById("new-budget")) != undefined) {
+            new_budget.style.background = "black";
         }
         if ((footer = document.getElementById("footer")) != undefined) {
             footer.style.backgroundColor = "black";

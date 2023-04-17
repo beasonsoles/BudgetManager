@@ -9,7 +9,7 @@ home.addEventListener("click", function() {
 });
 
 budgets.addEventListener("click", function() {
-    window.open("budgets.html", "_self");
+    window.open("budgets-library.html", "_self");
 });
 
 new_budget.addEventListener("click", function() {

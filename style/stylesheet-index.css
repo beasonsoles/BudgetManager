@@ -2,6 +2,10 @@ h2, h3 {
     color: white;
 }
 
+h3 {
+    font-size: 120%;
+}
+
 .register {
     float: right;
     padding: 8px;
@@ -9,18 +13,6 @@ h2, h3 {
     top: 30%;
     right: 2%;
     cursor: pointer;
-}
-
-.index-container, #budgets-index, #expenses-index, #notifications-index, #paypal-index {
-    justify-content: center;
-    align-items: center;
-}
-
-.budget-buddy-description {
-    width: 90%;
-    margin-top: 3%;
-    margin-bottom: 20%;
-    margin-left: 5%;
 }
 
 #title {
@@ -44,9 +36,60 @@ h2, h3 {
     text-align: center;
 }
 
+.budget-buddy-description {
+    width: 90%;
+    margin-top: 3%;
+    margin-bottom: 20%;
+    margin-left: 5%;
+}
+
+.feature {
+    font-family: arial;
+}
+
+.index-container, #budgets-index, #expenses-index, #notifications-index, #paypal-index {
+    justify-content: center;
+    align-items: center;
+}
+
+#budgets-index-text, #notifications-index-text {
+    position: relative;
+    float: right;
+}
+
+#budgets-index-image, #notifications-index-image {
+    position: relative;
+    margin-left: 45%;
+    margin-top: 1%;
+}
+
+#expenses-index-image, #paypal-index-image {
+    float: left;
+    margin-top: 1%;
+}
+
+#expenses-index-text, #paypal-index-text {
+    position: relative;
+    margin-left: 20%;
+}
+
+#paypal-index-text {
+    padding-top: 2%;
+}
+
+#notifications-index-text {
+    padding: 1%;
+    margin-left: 3%;
+}
+
 #budgets-index-image, #expenses-index-image, #notifications-index-image, #paypal-index-image {
-    width: 90px;
-    height: 90px;
+    width: 150px;
+    height: 150px;
+}
+
+#budgets-index-text, #expenses-index-text, #notifications-index-text, #paypal-index-text {
+    width: 35%;
+    position: relative;
 }
 
 #notifications-index-image {
@@ -54,7 +97,7 @@ h2, h3 {
 }
 
 #get-started {
-    padding: 3%;
+    padding: 4%;
     text-align: center;
 }
 
@@ -62,12 +105,13 @@ h2, h3 {
     width: 15%; 
     border-radius: 5%;
     height: 50px;
-    background-color:dodgerblue;
+    background-color: dodgerblue;
     font-weight: bold;
     font-size: large;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
 }
 
 footer {

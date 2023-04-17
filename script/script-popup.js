@@ -4,8 +4,6 @@ let account = document.getElementById("account-text");
 let profile = document.getElementById("profile-text");
 let current_user = localStorage.getItem("current_user");
 
-
-
 /* Update profile picture when user changes it */
 setInterval(function() {
     if ((profile = localStorage.getItem("userpicture_"+current_user.toString())) != undefined)

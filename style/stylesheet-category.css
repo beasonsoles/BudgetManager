@@ -1,0 +1,38 @@
+#your-budgets {
+    background-color: black;
+    border-radius: 6px;
+    width: 75%;
+    margin-top: 5%;
+    margin-bottom: 20%;
+    padding: 3%;
+}
+
+.category-budgets {
+    color: white;
+    font-size: 200%;
+    width: 100%;
+}
+
+.budget {
+    border-style: double;
+    border-radius: 10px;
+    border-color: white;
+    border-width: 2px;
+    border-spacing: 3px;
+    padding: 2%;
+    cursor: pointer;
+}
+
+.budget:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.name, .amount, .reset-period {
+    color: white;
+    display: inline-block;
+    margin-left: 10%;
+    margin-right: 10%;
+    overflow-wrap: break-word;
+}
