@@ -104,6 +104,11 @@ html {
     filter: invert(100%);
 }
 
+#paypal-icon {
+    width: 25px;
+    height: 25px;
+}
+
 #home, #home-icon {
     display: inline;
     font-size: x-large;
@@ -120,6 +125,11 @@ html {
 }
 
 #settings, #settings-icon {
+    display: inline;
+    font-size: x-large;
+}
+
+#paypal, #paypal-icon {
     display: inline;
     font-size: x-large;
 }
@@ -233,7 +243,7 @@ a {
         display: inline-table;
     }
     
-    #budget-brand-name, #home, #budgets, #create, #settings {
+    #budget-brand-name, #home, #budgets, #create, #settings, #paypal {
         display: none;
     }
 

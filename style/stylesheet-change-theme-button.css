@@ -43,7 +43,6 @@ input:checked + .sliding-button #circle {
     position: fixed;
     border-radius: 6px;
     left: 2%;
-    top: 50%;
     width: 12%;
     height: 10%;
     z-index: 3;
@@ -100,7 +99,6 @@ input:checked + .sliding-button #circle {
     }
 
     .change-theme-popup {
-        top: 35vh;
         width: 12%;
         height: 5vh;
     }
@@ -136,7 +134,6 @@ input:checked + .sliding-button #circle {
     }
 
     .change-theme-popup {
-        top: 40vh;
         left: 2%;
         width: 15%;
         height: 35px;

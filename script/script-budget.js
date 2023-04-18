@@ -21,7 +21,7 @@ for (var i = 0; i < expense_counter; i++) {
         var expense_name = expense_json.name;
         var expense_amount = expense_json.amount;
         var expense_reset_period = expense_json.reset_period;
-        expenses_total += expense_json.amount;
+        expenses_total -= expense_json.amount;
         add_expense(expense_name, expense_amount, expense_reset_period);
     }
 }
@@ -55,3 +55,9 @@ function add_expense(expense_name, expense_amount, expense_reset_period) {
     amount.innerHTML = "-$"+expense_amount;
     reset_period.innerHTML = "Resets: "+expense_reset_period;
 } 
+
+/* To redirect the user to the expense creation page*/
+let create_expense_button = document.getElementById("create-expense");
+create_expense_button.addEventListener("click", function() {
+    window.open("new-expense.html", "_self");
+});

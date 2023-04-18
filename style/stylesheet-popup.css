@@ -23,6 +23,7 @@
     width: 40px;
     height: 40px;
     filter: invert(100%);
+    cursor: pointer;
 }
 
 .popup {

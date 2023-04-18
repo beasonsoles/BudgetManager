@@ -63,7 +63,8 @@ budgets_created.forEach(function(budget) {
     });
 });
 
-/*
-setInterval(() => {
-    document.getElementById("main-container").style.height = window.innerHeight;
-}, 1);*/
+/* To redirect the user to the budget creation page*/
+let create_budget_button = document.getElementById("create-budget-button");
+create_budget_button.addEventListener("click", function() {
+    window.open("new-budget.html", "_self");
+});

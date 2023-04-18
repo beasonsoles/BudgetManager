@@ -2,7 +2,7 @@
 let home = document.getElementById("option1");
 let budgets = document.getElementById("option2");
 let new_budget = document.getElementById("option3");
-let settings = document.getElementById("option4");
+let settings = document.getElementById("option5");
 
 home.addEventListener("click", function() {
     window.open("home.html", "_self");
