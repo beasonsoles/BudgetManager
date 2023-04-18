@@ -20,13 +20,13 @@ h2, h3 {
     position: relative;
 }
 
-#expense-quantity, #budget-name-text, #budget-quantity, select {
+#expense-name-text, #expense-quantity, #budget-name-text, #budget-quantity, select {
     height: 40px;
     border-radius: 5px;
     font-size: large;
 }
 
-#budget-name-text {
+#budget-name-text, #expense-name-text {
     width: 84%;
 }
 
@@ -36,6 +36,7 @@ h2, h3 {
 
 select {
     width: 85%;
+    cursor: pointer;
 }
 
 #dollars {
@@ -59,7 +60,7 @@ select {
     height: 50px;
 }
 
-.expense-amount, .category, .reset-expense, .budget-name, .budget-amount, .reset-budget {
+.expense-name, .expense-amount, .category, .select-budget, .reset-expense, .budget-name, .budget-amount, .reset-budget {
     padding: 2%;
     padding-top: 0;
     left: 7%;
@@ -75,6 +76,7 @@ select {
     font-weight: bold;
     font-size: large;
     position: relative;
+    cursor: pointer;
 }
 
 #send {

@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="style/stylesheet-regions.css">
         <link rel="stylesheet" href="style/stylesheet-popup.css">
+        <link rel="stylesheet" href="style/stylesheet-budget.css">
         <link rel="stylesheet" href="style/stylesheet-change-theme-button.css">
         <link rel="icon" type="image/x-icon" href="images/budget-management-logo.png">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -64,10 +65,33 @@
         
         <main class="right" id="main-container">
             <div class="content">
+                <center>
+                    <h1 id="budget-name"></h1>
+                    <div id="budget-amount-container">
+                        <h3 id="budget-amount-text">Amount:</h3>
+                        <h2 id="budget-amount"></h2>
+                    </div>
+                    <div id="budget-amount-left-container">
+                        <h3 id="budget-amount-left-text">Left:</h3>
+                        <h2 id="budget-amount-left"></h2>
+                    </div>
+                    <div id="budget-category-container">
+                        <h3 id="budget-category-text">Category:</h3>
+                        <h2 id="budget-category"></h2>
+                    </div>
+                    <div id="budget-reset-period-container">
+                        <h3 id="budget-reset-period-text">Reset Period:</h3>
+                        <h2 id="budget-reset-period"></h2>
+                    </div>
+                    <hr><br>
+                    <h2 id="your-expenses-title">Expenses</h2>
+                    <div id="your-expenses"></div>
+                </center>
             </div>
         </main>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="script/script-budget.js"></script>
         <script src="script/script-popup.js"></script>
         <script src="script/script-menu.js"></script>
         <script src="script/script-searchbar.js"></script>

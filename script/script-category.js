@@ -1,5 +1,4 @@
 /* Display the budgets created within each category */
-let budgets_created = document.getElementsByClassName("budget");
 let budget_container = document.getElementById("your-budgets");
 if ((budget_counter = localStorage.getItem("budget_counter")) == undefined) {
     budget_counter = 0;
@@ -19,6 +18,7 @@ for (var i = 0; i < budget_counter; i++) {
         add_budget(budget_name, budget_amount, budget_reset_period);
     }
 }
+
 /* To create a budget */
 function add_budget(budget_name, budget_amount, budget_reset_period) {
     // create the elements of the budget
@@ -44,25 +44,24 @@ function add_budget(budget_name, budget_amount, budget_reset_period) {
     reset_period.innerHTML = "Resets: "+budget_reset_period;
 } 
 
-
+let budgets_created = document.querySelectorAll(".budget");
 /* To show the expenses associated to each budget */
-for (var i=0; i < budgets_created.length; i++) {
-    budgets_created[i].addEventListener("click", function() {
-        var clicked_budget = budgets_created[i];
+budgets_created.forEach(function(budget) {
+    budget.addEventListener("click", function() {
         // to keep track of which budget the user clicked on
         for (var j=0; j < budget_counter; j++) {
             var curr_budget_text = localStorage.getItem("budget"+(j+1).toString());
             var curr_budget_json = JSON.parse(curr_budget_text);
-            var budget_created_name = clicked_budget.firstChild.innerHTML;
-            var budget_created_amount = clicked_budget.firstChild.nextSibling.innerHTML;
-            var budget_created_reset = clicked_budget.lastChild.innerHTML;
+            var budget_created_name = budget.firstChild.innerHTML;
+            var budget_created_amount = budget.firstChild.nextSibling.innerHTML;
+            var budget_created_reset = budget.lastChild.innerHTML;
             if (budget_created_name == curr_budget_json.name && budget_created_amount == "$"+curr_budget_json.amount && budget_created_reset == "Resets: "+curr_budget_json.reset_period) {
-                localStorage.setItem("current_budget", clicked_budget);
+                localStorage.setItem("current_budget", (j+1).toString());
                 window.open("budget.html", "_self");
             }
         }
     });
-}
+});
 
 /*
 setInterval(() => {

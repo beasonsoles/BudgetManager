@@ -1,33 +1,59 @@
 let form = document.getElementById("new-expense");
+let user_budgets = document.getElementById("user-budgets");
 if ((expense_counter = localStorage.getItem("expense_counter")) == undefined) {
     expense_counter = 0;
 }
+if ((budget_counter = localStorage.getItem("budget_counter")) == undefined) {
+    budget_counter = 0;
+}
 
-//JSON that stores the amount, category and reset period of the expense created 
+//JSON that stores the amount, budget and reset period of the expense created 
 let expense_json = {
+    "name": "",
     "amount": "",
-    "category": "",
+    "budget_name": "",
     "reset_period": ""
 }
 
 /* Save the expense */
 form.addEventListener("submit", function(e) {
     e.preventDefault();
+    var expense_name = document.getElementById("expense-name-text").value;
     var expense_amount = document.getElementById("expense-quantity").value;
-    var category = document.getElementById("categories");
-    var expense_category = category.options[category.selectedIndex].text;
+    var category = document.getElementById("user-budgets");
+    var budget_name = category.options[category.selectedIndex].text;
     var reset_period = document.getElementById("reset-period");
     var expense_reset_period = reset_period.options[reset_period.selectedIndex].text;
     expense_counter++;
     localStorage.setItem("expense_counter", expense_counter);
+    expense_json.name = expense_name;
     expense_json.amount = expense_amount;
-    expense_json.category = expense_category;
+    expense_json.budget_name = budget_name;
     expense_json.reset_period = expense_reset_period;
     var json_text = JSON.stringify(expense_json);
     localStorage.setItem("expense"+expense_counter.toString(), json_text);
     alert("Your expense has been saved");
     form.reset();
 });
+
+/* To show the names of the budgets created by the user in the drop-down menu */
+for (var i = 0; i < budget_counter; i++) {
+    var budget_text = localStorage.getItem("budget"+(i+1).toString());
+    var budget_name = JSON.parse(budget_text).name;
+    new_budget_option(budget_name);
+}
+
+/* To create a new option in the drop-down menu */
+function new_budget_option(budget_name) {
+    // create the option element
+    var option = document.createElement("option");
+    // add the value attribute to the element
+    option.value = budget_name;
+    // create the structure by using appendChild
+    user_budgets.appendChild(option);
+    // give a value to the element
+    option.innerHTML = budget_name;
+} 
 
 /* To prevent the user from saving the expense if the Save button is not pressed */
 form.addEventListener("keydown", function(e) {
