@@ -3,7 +3,7 @@ h2, h3 {
     width: 100%;
 }
 
-#new-expense, #new-budget, #edit-budget {
+#new-expense, #new-budget, #edit-budget, #edit-expense {
     background-color: black;
     border-radius: 6px;
     width: 90%;

@@ -12,6 +12,27 @@
     overflow-wrap: break-word;
 }
 
+.edit-expense, .delete-expense {
+    display: inline-table;
+    position: absolute;
+    z-index: 3;
+    top: 4%;
+}
+
+.delete-expense { 
+    right: 2%;
+}
+
+.edit-expense { 
+    right: 15%;
+}
+
+.edit-expense-img, .delete-expense-img {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%);
+}
+
 .name, .amount-left, .reset-period {
     color: white;
 }

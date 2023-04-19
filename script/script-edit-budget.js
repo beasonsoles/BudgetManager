@@ -6,7 +6,7 @@ if ((maximum_budget_counter = localStorage.getItem("maximum_budget_counter")) ==
 }
 /* Show current values */
 // look for the corresponding budget in the database
-let results = get_budget_json(selected_budget_name); 
+let results = get_budget_json(selected_budget_name);
 if (results) {
     curr_budget_json = results[0];
     curr_budget_index = results[1];

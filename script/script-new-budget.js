@@ -19,6 +19,11 @@ let budget_json = {
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     var budget_name = document.getElementById("budgetnametext").value;
+    //check that the budget name doesn't already exist
+    if (get_budget_json(budget_name)) {
+        alert("That budget name already exists. \nPlease choose a different name for your budget");
+        return;
+    }
     var budget_amount = document.getElementById("budgetquantity").value;
     var category = document.getElementById("categories");
     var budget_category = category.options[category.selectedIndex].text;
@@ -44,3 +49,18 @@ form.addEventListener("keydown", function(e) {
         e.preventDefault();
     }
 });
+
+function get_budget_json(budget_name) {
+    for (var i=0; i < maximum_budget_counter; i++) {
+        var curr_budget_text = localStorage.getItem("budget"+(i+1).toString());
+        var curr_budget_json = JSON.parse(curr_budget_text);
+        if (curr_budget_json && budget_name == curr_budget_json.name) {
+            //budget already exists
+            return true;
+        }
+        else {
+            //budget does not exist
+            return false;
+        }
+    }
+}
