@@ -3,7 +3,7 @@ h2, h3 {
     width: 100%;
 }
 
-#new-expense, #new-budget {
+#new-expense, #new-budget, #edit-budget {
     background-color: black;
     border-radius: 6px;
     width: 90%;
@@ -20,17 +20,17 @@ h2, h3 {
     position: relative;
 }
 
-#expense-name-text, #expense-quantity, #budget-name-text, #budget-quantity, select {
+#expense-name-text, #expense-quantity, #budgetnametext, #budgetquantity, select {
     height: 40px;
     border-radius: 5px;
     font-size: large;
 }
 
-#budget-name-text, #expense-name-text {
+#budgetnametext, #expense-name-text {
     width: 84%;
 }
 
-#expense-quantity, #budget-quantity {
+#expense-quantity, #budgetquantity {
     width: 83%;
 }
 
@@ -50,7 +50,7 @@ select {
     display: inline-block;
 }
 
-#budget-quantity, #dollars {
+#budgetquantity, #dollars {
     display: inline-block;
 }
 
@@ -101,7 +101,7 @@ select {
     }
 
     
-    #expense-quantity, #budget-quantity {
+    #expense-quantity, #budgetquantity {
         width: 82%;
     }
     #send, #cancel {
@@ -125,7 +125,7 @@ select {
         width: 90%;
     }
 
-    #expense-quantity, #budget-quantity {
+    #expense-quantity, #budgetquantity {
         width: 78%;
     }
 

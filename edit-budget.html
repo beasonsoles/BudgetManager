@@ -67,25 +67,40 @@
         
       <main class="right" id="main-container">
           <div class="content">
-              <form id="new-expense"><br>
-                  <h1 id="expense-title">Add your expense</h1>
-                  <div class="expense-name">
-                    <h2 class="subtitles">Expense name</h2><br>
-                    <input type="text" maxlength="15" id="expense-name-text" placeholder=" Expense name" required>
+              <form name="form" id="edit-budget"><br>
+                  <h1 id="budget-title">Edit budget</h1>
+                  <div class="budget-name">
+                    <h2 class="subtitles">Budget name</h2><br>
+                    <input type="text" maxlength="20" id="budgetnametext" placeholder=" Budget name" required>
                   </div>
-                  <div class="expense-amount">
-                      <h2 class="subtitles">Expense amount</h2><br>
+                  <div class="budget-amount">
+                      <h2 class="subtitles">Budget amount</h2><br>
                       <p id="dollars">$</p>
-                      <input type="number" step="0.01" min=0 max=1000000000 id="expense-quantity" placeholder=" Amount" required>
+                      <input type="number" step="0.01" min=0 max=1000000000 id="budgetquantity" placeholder=" Budget amount" required>
                   </div>
-                  <div class="select-budget">
-                      <h2 class="subtitles">Select a budget</h2><br>
-                      <select name="user-budgets" id="user-budgets" required></select>
+                  <div class="category">
+                      <h2 class="subtitles">Select a category</h2><br>
+                      <select name="categories" id="categories" required>
+                        <option value="automobile/transportation">Automobile/Transportation</option>
+                        <option value="bills/utilities">Bills/Utilities</option>
+                        <option value="business">Business</option>
+                        <option value="education">Education</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="food">Food</option>
+                        <option value="gifts/donations">Gifts/Donations</option>
+                        <option value="health/fitness">Health/Fitness</option>
+                        <option value="home">Home</option>
+                        <option value="income">Income</option>
+                        <option value="kids">Kids</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="travel">Travel</option>
+                        <option value="other">Other</option>
+                      </select>
                   </div>
-                  <div class="reset-expense">
+                  <div class="reset-budget">
                     <h2 class="subtitles">Set a reset period</h2>
-                    <h3 class="info">(If the expense is recurrent)</h3><br>
-                    <select name="reset-period" id="reset-period" required>
+                    <h3 class="info">(If the budget is recurrent)</h3><br>
+                    <select name="reset-period" id="resetperiod" required>
                       <option value="never">Never</option>
                       <option value="daily">Daily</option>
                       <option value="weekly">Weekly</option>
@@ -101,7 +116,7 @@
       </main>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="script/script-new-expense.js"></script>
+      <script src="script/script-edit-budget.js"></script>
       <script src="script/script-popup.js"></script>
       <script src="script/script-menu.js"></script>
       <script src="script/script-searchbar.js"></script>

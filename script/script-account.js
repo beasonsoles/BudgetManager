@@ -2,27 +2,26 @@ let form_account = document.getElementById("account-form");
 let user_counter = localStorage.getItem("user_counter");
 let user_profile = document.getElementById("user-profile-picture");
 let new_file = document.getElementById("userpicture");
+let curr_user = localStorage.getItem("current_user");
 let reader = new FileReader();
 
 /* Show current values */
-setInterval(function() {
-    document.form.pswd.value = localStorage.getItem("password_"+current_user.toString());
-    document.form.name.value = localStorage.getItem("name_"+current_user.toString());
-    document.form.surname.value = localStorage.getItem("surname_"+current_user.toString());
-    document.form.useremail.value = localStorage.getItem("email_"+current_user.toString());
-    if ((profile = localStorage.getItem("userpicture_"+current_user.toString())) != undefined) {
-        user_profile.src = profile;
-    } else {
-        user_profile.src = "images/empty-profile.png";
-    }
-}, 1);
+document.form.pswd.value = localStorage.getItem("password_"+curr_user.toString());
+document.form.name.value = localStorage.getItem("name_"+curr_user.toString());
+document.form.surname.value = localStorage.getItem("surname_"+curr_user.toString());
+document.form.useremail.value = localStorage.getItem("email_"+curr_user.toString());
+if ((profile = localStorage.getItem("userpicture_"+curr_user.toString())) != undefined) {
+    user_profile.src = profile;
+} else {
+    user_profile.src = "images/empty-profile.png";
+}
 
 /* Change profile picture if the user selects a new one */
 new_file.addEventListener("change", function(e) {
     selected_photo = e.currentTarget.files.length;
     if (selected_photo != 0) {
         reader.addEventListener("load", function(e) {
-            localStorage.setItem("userpicture_"+current_user.toString(), e.target.result);
+            localStorage.setItem("userpicture_"+curr_user.toString(), e.target.result);
         });
         reader.readAsDataURL(new_file.files[0]);
     }
@@ -39,10 +38,10 @@ form_account.addEventListener("submit", function(e) {
     new_surname = document.getElementById("surname").value;
     try {
         if (checkPassword(new_password) && checkEmail(new_email)) {
-            localStorage.setItem("password_"+current_user.toString(), new_password);
-            localStorage.setItem("name_"+current_user.toString(), new_name);
-            localStorage.setItem("surname_"+current_user.toString(), new_surname);
-            localStorage.setItem("email_"+current_user.toString(), new_email);
+            localStorage.setItem("password_"+curr_user.toString(), new_password);
+            localStorage.setItem("name_"+curr_user.toString(), new_name);
+            localStorage.setItem("surname_"+curr_user.toString(), new_surname);
+            localStorage.setItem("email_"+curr_user.toString(), new_email);
             alert("Your changes have been saved");
         }
     } catch (error) {

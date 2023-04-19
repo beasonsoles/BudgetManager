@@ -1,7 +1,6 @@
 let profile_picture = document.getElementById("profile-picture");
 let log_out = document.getElementById("log-out-text");
 let account = document.getElementById("account-text");
-let profile = document.getElementById("profile-text");
 let current_user = localStorage.getItem("current_user");
 
 /* Update profile picture when user changes it */
@@ -34,8 +33,4 @@ log_out.addEventListener("click", function() {
 
 account.addEventListener("click", function() {
     window.open("account.html", "_self");
-});
-
-profile.addEventListener("click", function() {
-    window.open("profile.html", "_self");
 });

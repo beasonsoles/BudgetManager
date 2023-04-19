@@ -3,6 +3,10 @@ if ((budget_counter = localStorage.getItem("budget_counter")) == undefined) {
     budget_counter = 0;
 }
 
+if ((maximum_budget_counter = localStorage.getItem("maximum_budget_counter")) == undefined) {
+    maximum_budget_counter = 0;
+}
+
 //JSON that stores the amount, category and reset period of the budget created 
 let budget_json = {
     "name": "",
@@ -14,14 +18,16 @@ let budget_json = {
 /* Save the budget */
 form.addEventListener("submit", function(e) {
     e.preventDefault();
-    var budget_name = document.getElementById("budget-name-text").value;
-    var budget_amount = document.getElementById("budget-quantity").value;
+    var budget_name = document.getElementById("budgetnametext").value;
+    var budget_amount = document.getElementById("budgetquantity").value;
     var category = document.getElementById("categories");
     var budget_category = category.options[category.selectedIndex].text;
-    var reset_period = document.getElementById("reset-period");
+    var reset_period = document.getElementById("resetperiod");
     var budget_reset_period = reset_period.options[reset_period.selectedIndex].text;
     budget_counter++;
+    maximum_budget_counter++;
     localStorage.setItem("budget_counter", budget_counter);
+    localStorage.setItem("maximum_budget_counter", maximum_budget_counter);
     budget_json.name = budget_name;
     budget_json.amount = budget_amount;
     budget_json.category = budget_category;

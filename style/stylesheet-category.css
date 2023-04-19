@@ -19,6 +19,11 @@
     align-items: center;
 }
 
+.budget {
+    position: relative;
+    z-index: 1;
+}
+
 .budget, #create-budget-button {
     border-style: double;
     border-radius: 10px;
@@ -49,6 +54,31 @@
 
 #create-budget-text {
     text-align: justify;
+}
+
+.view-budget, .edit-budget, .delete-budget {
+    display: inline-table;
+    position: absolute;
+    z-index: 3;
+    top: 4%;
+}
+
+.delete-budget { 
+    right: 2%;
+}
+
+.edit-budget { 
+    right: 6%;
+}
+
+.view-budget {
+    right: 10%;
+}
+
+.view-budget-img, .edit-budget-img, .delete-budget-img {
+    width: 25px;
+    height: 25px;
+    filter: invert(100%);
 }
 
 .name, .amount, .reset-period {

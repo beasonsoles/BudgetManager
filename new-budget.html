@@ -26,7 +26,6 @@
         <div class="popup" id="profile-popup">
           <div class="container" id="popup-container"><br>
             <button class="account" id="account-text">Account</button><br>
-            <button class="profile" id="profile-text">Profile</button><br>
             <button class="log-out" id="log-out-text">Log Out</button>
           </div>
         </div>
@@ -72,12 +71,12 @@
                   <h1 id="budget-title">Create a budget</h1>
                   <div class="budget-name">
                     <h2 class="subtitles">Budget name</h2><br>
-                    <input type="text" maxlength="20" id="budget-name-text" placeholder=" Budget name" required>
+                    <input type="text" maxlength="20" id="budgetnametext" placeholder=" Budget name" required>
                   </div>
                   <div class="budget-amount">
                       <h2 class="subtitles">Budget amount</h2><br>
                       <p id="dollars">$</p>
-                      <input type="number" step="0.01" min=0 max=1000000000 id="budget-quantity" placeholder=" Budget amount" required>
+                      <input type="number" step="0.01" min=0 max=1000000000 id="budgetquantity" placeholder=" Budget amount" required>
                   </div>
                   <div class="category">
                       <h2 class="subtitles">Select a category</h2><br>
@@ -101,7 +100,7 @@
                   <div class="reset-budget">
                     <h2 class="subtitles">Set a reset period</h2>
                     <h3 class="info">(If the budget is recurrent)</h3><br>
-                    <select name="reset-period" id="reset-period" required>
+                    <select name="reset-period" id="resetperiod" required>
                       <option value="never">Never</option>
                       <option value="daily">Daily</option>
                       <option value="weekly">Weekly</option>
