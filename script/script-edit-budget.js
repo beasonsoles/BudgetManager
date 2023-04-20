@@ -1,3 +1,4 @@
+//--------------------------------FIX submit------------------------------------------
 let selected_budget_name = localStorage.getItem("selected_budget");
 let curr_budget_json = null;
 let curr_budget_index = 0;
@@ -12,6 +13,8 @@ if (results) {
     curr_budget_index = results[1];
     document.form.budgetnametext.value = curr_budget_json.name;
     document.form.budgetquantity.value = curr_budget_json.amount;
+    //----------- Automobile option is being deleted (add at the bottom) ----------
+    //document.form.categories.prop("selectedIndex", 0);
     document.form.categories.options[0].text = curr_budget_json.category;
     document.form.resetperiod.options[0].text = curr_budget_json.reset_period;
 }
@@ -23,7 +26,6 @@ form.addEventListener("submit", function(e) {
     if (curr_budget_json) {
         curr_budget_json.name = document.form.budgetnametext.value;
         curr_budget_json.amount = document.form.budgetquantity.value;
-        //----------- Automobile option is being deleted (add at the bottom)---------
         curr_budget_json.category = document.form.categories.options[0].text;
         curr_budget_json.reset_period = document.form.resetperiod.options[0].text;
         localStorage.setItem("budget"+curr_budget_index.toString(), JSON.stringify(curr_budget_json));

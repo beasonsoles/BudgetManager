@@ -118,7 +118,7 @@ delete_button_list.forEach(function(delete_button) {
     delete_button.addEventListener("mouseout", function() {
         delete_button.firstChild.src = "images/delete.png";
     });
-    // redirect the user to the budget deletion page
+    // delete the budget
     delete_button.addEventListener("click", function() {
         var response = confirm("Are you sure you want to delete this budget?");
         if (response) {
@@ -128,7 +128,7 @@ delete_button_list.forEach(function(delete_button) {
             for (var i=0; i < maximum_budget_counter; i++) {
                 var curr_budget_text = localStorage.getItem("budget"+(i+1).toString());
                 var curr_budget_json = JSON.parse(curr_budget_text);
-                if (curr_budget_json && budget.firstChild.nextSibling.nextSibling.innerHTML == curr_budget_json.name) {
+                if (curr_budget_json && budget.lastChild.previousSibling.previousSibling.innerHTML == curr_budget_json.name) {
                     localStorage.removeItem("budget"+(i+1).toString());
                     budget_counter--;
                     localStorage.setItem("budget_counter", budget_counter);

@@ -3,8 +3,11 @@ let user_budgets = document.getElementById("user-budgets");
 if ((expense_counter = localStorage.getItem("expense_counter")) == undefined) {
     expense_counter = 0;
 }
-if ((budget_counter = localStorage.getItem("budget_counter")) == undefined) {
-    budget_counter = 0;
+if ((maximum_expense_counter = localStorage.getItem("maximum_expense_counter")) == undefined) {
+    maximum_expense_counter = 0;
+}
+if ((maximum_budget_counter = localStorage.getItem("maximum_budget_counter")) == undefined) {
+    maximum_budget_counter = 0;
 }
 
 //JSON that stores the amount, budget and reset period of the expense created 
@@ -22,25 +25,34 @@ form.addEventListener("submit", function(e) {
     var expense_amount = document.getElementById("expense-quantity").value;
     var category = document.getElementById("user-budgets");
     var budget_name = category.options[category.selectedIndex].text;
+    //check that the expense name doesn't already exist
+    if (get_expense_json(expense_name, budget_name)) {
+        alert("That expense name already exists. \nPlease choose a different name for your expense");
+        return;
+    }
     var reset_period = document.getElementById("reset-period");
     var expense_reset_period = reset_period.options[reset_period.selectedIndex].text;
     expense_counter++;
+    maximum_expense_counter++;
     localStorage.setItem("expense_counter", expense_counter);
+    localStorage.setItem("maximum_expense_counter", maximum_expense_counter);
     expense_json.name = expense_name;
     expense_json.amount = expense_amount;
     expense_json.budget_name = budget_name;
     expense_json.reset_period = expense_reset_period;
     var json_text = JSON.stringify(expense_json);
-    localStorage.setItem("expense"+expense_counter.toString(), json_text);
+    localStorage.setItem("expense"+maximum_expense_counter.toString(), json_text);
     alert("Your expense has been saved");
     form.reset();
 });
 
 /* To show the names of the budgets created by the user in the drop-down menu */
-for (var i = 0; i < budget_counter; i++) {
+for (var i = 0; i < maximum_budget_counter; i++) {
     var budget_text = localStorage.getItem("budget"+(i+1).toString());
-    var budget_name = JSON.parse(budget_text).name;
-    new_budget_option(budget_name);
+    var budget_json = JSON.parse(budget_text);
+    if (budget_json) {
+        new_budget_option(budget_json.name);
+    }
 }
 
 /* To create a new option in the drop-down menu */
@@ -61,3 +73,14 @@ form.addEventListener("keydown", function(e) {
         e.preventDefault();
     }
 });
+
+function get_expense_json(expense_name, budget_name) {
+    for (var i=0; i < maximum_expense_counter; i++) {
+        var curr_expense_text = localStorage.getItem("expense"+(i+1).toString());
+        var curr_expense_json = JSON.parse(curr_expense_text);
+        if (curr_expense_json && expense_name == curr_expense_json.name && budget_name == curr_expense_json.budget_name) {
+            //expense already exists
+            return true;
+        }
+    }
+}

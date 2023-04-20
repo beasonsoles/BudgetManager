@@ -38,7 +38,7 @@ form.addEventListener("submit", function(e) {
     budget_json.category = budget_category;
     budget_json.reset_period = budget_reset_period;
     var json_text = JSON.stringify(budget_json);
-    localStorage.setItem("budget"+budget_counter.toString(), json_text);
+    localStorage.setItem("budget"+maximum_budget_counter.toString(), json_text);
     alert("Your budget has been saved");
     form.reset();
 });
@@ -57,10 +57,6 @@ function get_budget_json(budget_name) {
         if (curr_budget_json && budget_name == curr_budget_json.name) {
             //budget already exists
             return true;
-        }
-        else {
-            //budget does not exist
-            return false;
         }
     }
 }
