@@ -20,17 +20,17 @@ h2, h3 {
     position: relative;
 }
 
-#expense-name-text, #expense-quantity, #budgetnametext, #budgetquantity, select {
+#expensenametext, #expensequantity, #budgetnametext, #budgetquantity, select {
     height: 40px;
     border-radius: 5px;
     font-size: large;
 }
 
-#budgetnametext, #expense-name-text {
+#budgetnametext, #expensenametext {
     width: 84%;
 }
 
-#expense-quantity, #budgetquantity {
+#expensequantity, #budgetquantity {
     width: 83%;
 }
 
@@ -46,7 +46,7 @@ select {
     font-weight: bold;
 }
 
-#expense-quantity, #dollars {
+#expensequantity, #dollars {
     display: inline-block;
 }
 

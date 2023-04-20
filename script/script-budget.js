@@ -126,7 +126,7 @@ edit_button_list.forEach(function(edit_button) {
     });
     // redirect the user to the expense edition page 
     edit_button.addEventListener("click", function() {
-        var selected_expense = edit_button.parentElement.lastChild.previousSibling.previousSibling.innerHTML;
+        var selected_expense = edit_button.parentElement.firstChild.nextSibling.nextSibling.innerHTML;
         localStorage.setItem("selected_expense", selected_expense);
         window.open("edit-expense.html", "_self");
     });

@@ -1,5 +1,5 @@
 let form = document.getElementById("new-expense");
-let user_budgets = document.getElementById("user-budgets");
+let user_budgets = document.getElementById("userbudgets");
 if ((expense_counter = localStorage.getItem("expense_counter")) == undefined) {
     expense_counter = 0;
 }
@@ -20,7 +20,7 @@ let expense_json = {
 }
 
 /* Displays the text custom date number input if "Custom Date" is selected from drop-down */
-var dropdown = document.getElementById("reset-period");
+var dropdown = document.getElementById("resetperiod");
 var resetDate = document.getElementById("reset-date");
 var custom_header = document.getElementById("resetCustomHeader")
 dropdown.addEventListener("change", function() 
@@ -39,16 +39,16 @@ dropdown.addEventListener("change", function()
 /* Save the expense */
 form.addEventListener("submit", function(e) {
     e.preventDefault();
-    var expense_name = document.getElementById("expense-name-text").value;
-    var expense_amount = document.getElementById("expense-quantity").value;
-    var category = document.getElementById("user-budgets");
+    var expense_name = document.getElementById("expensenametext").value;
+    var expense_amount = document.getElementById("expensequantity").value;
+    var category = document.getElementById("userbudgets");
     var budget_name = category.options[category.selectedIndex].text;
     //check that the expense name doesn't already exist
     if (get_expense_json(expense_name, budget_name)) {
         alert("That expense name already exists. \nPlease choose a different name for your expense");
         return;
     }
-    var reset_period = document.getElementById("reset-period");
+    var reset_period = document.getElementById("resetperiod");
     var expense_reset_period = reset_period.options[reset_period.selectedIndex].text;
     var reset_date = document.getElementById("reset-date").value;
     expense_counter++;

@@ -67,25 +67,25 @@
         
       <main class="right" id="main-container">
           <div class="content">
-              <form id="edit-expense"><br>
+              <form name="form" id="edit-expense"><br>
                   <h1 id="expense-title">Edit your expense</h1>
                   <div class="expense-name">
                     <h2 class="subtitles">Expense name</h2><br>
-                    <input type="text" maxlength="15" id="expense-name-text" placeholder=" Expense name" required>
+                    <input type="text" maxlength="15" id="expensenametext" placeholder=" Expense name" required>
                   </div>
                   <div class="expense-amount">
                       <h2 class="subtitles">Expense amount</h2><br>
                       <p id="dollars">$</p>
-                      <input type="number" step="0.01" min=0 max=1000000000 id="expense-quantity" placeholder=" Amount" required>
+                      <input type="number" step="0.01" min=0 max=1000000000 id="expensequantity" placeholder=" Amount" required>
                   </div>
                   <div class="select-budget">
                       <h2 class="subtitles">Select a budget</h2><br>
-                      <select name="user-budgets" id="user-budgets" required></select>
+                      <select name="userbudgets" id="userbudgets" required></select>
                   </div>
                   <div class="reset-expense">
                     <h2 class="subtitles">Set a reset period</h2>
                     <h3 class="info">(If the expense is recurrent)</h3><br>
-                    <select name="reset-period" id="reset-period" required>
+                    <select name="reset-period" id="resetperiod" required>
                       <option value="never">Never</option>
                       <option value="daily">Daily</option>
                       <option value="weekly">Weekly</option>
