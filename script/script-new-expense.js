@@ -17,7 +17,7 @@ let expense_json = {
     "budget_name": "",
     "reset_period": "",
     "reset_date": "",
-    "creation_date": ""
+    "last_reset": ""
 }
 
 /* Displays the text custom date number input if "Custom Date" is selected from drop-down */
@@ -61,7 +61,7 @@ form.addEventListener("submit", function(e) {
     expense_json.budget_name = budget_name;
     expense_json.reset_period = expense_reset_period;
     expense_json.reset_date = reset_date;
-    expense_json.creation_date = new Date().toISOString().slice(0, 10);
+    expense_json.last_reset = new Date().toISOString().slice(0, 10);
     var json_text = JSON.stringify(expense_json);
     localStorage.setItem("expense"+maximum_expense_counter.toString(), json_text);
     alert("Your expense has been saved");
