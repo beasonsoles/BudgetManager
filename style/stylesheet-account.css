@@ -56,30 +56,3 @@ h3 {
     background-color:rgb(20, 145, 241);
     cursor: pointer;
 }
-
-/* MEDIA QUERIES */
-
-/* Tablet */
-
-@media (min-width: 481px) and (max-width: 900px) {
-    .data {
-        margin-top: 5%;
-        margin-bottom: 30%;
-    }
-}
-
-/* Smartphone */
-
-@media (max-width: 480px) {
-    .data {
-        margin-top: 2%;
-        margin-bottom: 40%;
-    }
-
-    #send-values, #reset-values {
-        width: 30%; 
-        height: 30px;
-        left: 20%;
-        margin-top: 10%;
-    }
-}

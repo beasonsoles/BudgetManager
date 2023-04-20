@@ -92,8 +92,12 @@
                       <option value="monthly">Monthly</option>
                       <option value="quarterly">Quarterly</option>
                       <option value="yearly">Yearly</option>
+                      <option value="custom-date">Custom Date</option>
                     </select>
-                </div>
+                    <div class="reset-date">
+                      <h3 id="resetCustomHeader" style="display: none;">Reset on the <input type="number" min="1" max="31" id="reset-date" name="days" style="display: none;"> day of each month</h3><br>                                                           
+                    </div>
+                  </div>
                   <input type="submit" value="Save" id="send">
                   <input type="reset" value="Cancel" id="cancel">          
               </div>

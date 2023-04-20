@@ -15,8 +15,26 @@ let expense_json = {
     "name": "",
     "amount": "",
     "budget_name": "",
-    "reset_period": ""
+    "reset_period": "",
+    "reset_date": ""
 }
+
+/* Displays the text custom date number input if "Custom Date" is selected from drop-down */
+var dropdown = document.getElementById("reset-period");
+var resetDate = document.getElementById("reset-date");
+var custom_header = document.getElementById("resetCustomHeader")
+dropdown.addEventListener("change", function() 
+{
+  // Check if the selected option is "Custom Date"
+  if (dropdown.value === "custom-date") {
+    custom_header.style.display = "inline-block"; // Display the header for the custom reset date
+    resetDate.style.display = "inline-block";  // Display the number input for the custom reset date
+  } else {
+    custom_header.style.display = "none"; // Hide the number input for the custom reset date
+    resetDate.style.display = "none"; // Hide the number input for the custom reset date
+  }
+});
+
 
 /* Save the expense */
 form.addEventListener("submit", function(e) {
@@ -32,6 +50,7 @@ form.addEventListener("submit", function(e) {
     }
     var reset_period = document.getElementById("reset-period");
     var expense_reset_period = reset_period.options[reset_period.selectedIndex].text;
+    var reset_date = document.getElementById("reset-date").value;
     expense_counter++;
     maximum_expense_counter++;
     localStorage.setItem("expense_counter", expense_counter);
@@ -40,6 +59,7 @@ form.addEventListener("submit", function(e) {
     expense_json.amount = expense_amount;
     expense_json.budget_name = budget_name;
     expense_json.reset_period = expense_reset_period;
+    expense_json.reset_date = reset_date;
     var json_text = JSON.stringify(expense_json);
     localStorage.setItem("expense"+maximum_expense_counter.toString(), json_text);
     alert("Your expense has been saved");

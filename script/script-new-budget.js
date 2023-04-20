@@ -12,8 +12,26 @@ let budget_json = {
     "name": "",
     "amount": "",
     "category": "",
-    "reset_period": ""
+    "reset_period": "",
+    "reset_date": ""
 }
+
+/* Displays the text custom date number input if "Custom Date" is selected from drop-down */
+var dropdown = document.getElementById("resetperiod");
+var resetDate = document.getElementById("reset-date");
+var custom_header = document.getElementById("resetCustomHeader")
+dropdown.addEventListener("change", function() 
+{
+  // Check if the selected option is "Custom Date"
+  if (dropdown.value === "custom-date") {
+    custom_header.style.display = "inline-block"; // Display the header for the custom reset date
+    resetDate.style.display = "inline-block";  // Display the number input for the custom reset date
+  } else {
+    custom_header.style.display = "none"; // Hide the number input for the custom reset date
+    resetDate.style.display = "none"; // Hide the number input for the custom reset date
+  }
+});
+
 
 /* Save the budget */
 form.addEventListener("submit", function(e) {
@@ -29,6 +47,7 @@ form.addEventListener("submit", function(e) {
     var budget_category = category.options[category.selectedIndex].text;
     var reset_period = document.getElementById("resetperiod");
     var budget_reset_period = reset_period.options[reset_period.selectedIndex].text;
+    var reset_date = document.getElementById("reset-date").value;
     budget_counter++;
     maximum_budget_counter++;
     localStorage.setItem("budget_counter", budget_counter);
@@ -37,6 +56,7 @@ form.addEventListener("submit", function(e) {
     budget_json.amount = budget_amount;
     budget_json.category = budget_category;
     budget_json.reset_period = budget_reset_period;
+    budget_json.reset_date = reset_date;
     var json_text = JSON.stringify(budget_json);
     localStorage.setItem("budget"+maximum_budget_counter.toString(), json_text);
     alert("Your budget has been saved");
