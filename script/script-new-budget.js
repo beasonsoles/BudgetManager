@@ -61,6 +61,8 @@ form.addEventListener("submit", function(e) {
     localStorage.setItem("budget"+maximum_budget_counter.toString(), json_text);
     alert("Your budget has been saved");
     form.reset();
+    localStorage.setItem("selected_category", budget_category);
+    window.open("category.html", "_self");
 });
 
 /* To prevent the user from saving the budget if the Save button is not pressed */

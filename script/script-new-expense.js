@@ -64,6 +64,8 @@ form.addEventListener("submit", function(e) {
     localStorage.setItem("expense"+maximum_expense_counter.toString(), json_text);
     alert("Your expense has been saved");
     form.reset();
+    localStorage.setItem("selected_budget", budget_name);
+    window.open("budget.html", "_self");
 });
 
 /* To show the names of the budgets created by the user in the drop-down menu */
