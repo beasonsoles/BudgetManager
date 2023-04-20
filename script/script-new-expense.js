@@ -21,7 +21,7 @@ let expense_json = {
 
 /* Displays the text custom date number input if "Custom Date" is selected from drop-down */
 var dropdown = document.getElementById("resetperiod");
-var resetDate = document.getElementById("reset-date");
+var resetDate = document.getElementById("resetdate");
 var custom_header = document.getElementById("resetCustomHeader")
 dropdown.addEventListener("change", function() 
 {
@@ -50,7 +50,7 @@ form.addEventListener("submit", function(e) {
     }
     var reset_period = document.getElementById("resetperiod");
     var expense_reset_period = reset_period.options[reset_period.selectedIndex].text;
-    var reset_date = document.getElementById("reset-date").value;
+    var reset_date = document.getElementById("resetdate").value;
     expense_counter++;
     maximum_expense_counter++;
     localStorage.setItem("expense_counter", expense_counter);

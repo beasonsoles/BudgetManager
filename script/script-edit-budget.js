@@ -5,6 +5,23 @@ let curr_budget_index = 0;
 if ((maximum_budget_counter = localStorage.getItem("maximum_budget_counter")) == undefined) {
     maximum_budget_counter = 0;
 }
+
+/* Displays the Custom Date number input if "Custom Date" is selected from drop-down */
+var dropdown = document.getElementById("resetperiod");
+var resetDate = document.getElementById("resetdate");
+var custom_header = document.getElementById("resetCustomHeader")
+dropdown.addEventListener("change", function() 
+{
+  // Check if the selected option is "Custom Date"
+  if (dropdown.value === "custom-date") {
+    custom_header.style.display = "inline-block"; // Display the header for the custom reset date
+    resetDate.style.display = "inline-block";  // Display the number input for the custom reset date
+  } else {
+    custom_header.style.display = "none"; // Hide the number input for the custom reset date
+    resetDate.style.display = "none"; // Hide the number input for the custom reset date
+  }
+});
+
 /* Show current values */
 // look for the corresponding budget in the database
 let results = get_budget_json(selected_budget_name);
@@ -15,8 +32,11 @@ if (results) {
     document.form.budgetquantity.value = curr_budget_json.amount;
     //----------- Automobile option is being deleted (add at the bottom) ----------
     //document.form.categories.prop("selectedIndex", 0);
-    document.form.categories.options[0].text = curr_budget_json.category;
-    document.form.resetperiod.options[0].text = curr_budget_json.reset_period;
+    document.form.categories.options[categories.selectedIndex].text = curr_budget_json.category;
+    document.form.resetperiod.options[resetperiod.selectedIndex].text = curr_budget_json.reset_period;
+    if (curr_budget_json.reset_date != "") {
+        document.form.resetdate.value = curr_budget_json.reset_date;
+    }
 }
 
 /* Save the changes to the budget */ 
@@ -26,8 +46,11 @@ form.addEventListener("submit", function(e) {
     if (curr_budget_json) {
         curr_budget_json.name = document.form.budgetnametext.value;
         curr_budget_json.amount = document.form.budgetquantity.value;
-        curr_budget_json.category = document.form.categories.options[0].text;
-        curr_budget_json.reset_period = document.form.resetperiod.options[0].text;
+        curr_budget_json.category = document.form.categories.options[categories.selectedIndex].text;
+        curr_budget_json.reset_period = document.form.resetperiod.options[resetperiod.selectedIndex].text;
+        if (document.form.resetdate) {
+            curr_budget_json.reset_date = document.form.resetdate.value;
+        }
         localStorage.setItem("budget"+curr_budget_index.toString(), JSON.stringify(curr_budget_json));
         alert("Your changes have been saved");
         window.open("category.html", "_self");

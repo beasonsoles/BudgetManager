@@ -11,6 +11,22 @@ if ((maximum_budget_counter = localStorage.getItem("maximum_budget_counter")) ==
 }
 show_expense_values();
 
+/* Displays the Custom Date number input if "Custom Date" is selected from drop-down */
+var dropdown = document.getElementById("resetperiod");
+var resetDate = document.getElementById("resetdate");
+var custom_header = document.getElementById("resetCustomHeader")
+dropdown.addEventListener("change", function() 
+{
+  // Check if the selected option is "Custom Date"
+  if (dropdown.value === "custom-date") {
+    custom_header.style.display = "inline-block"; // Display the header for the custom reset date
+    resetDate.style.display = "inline-block";  // Display the number input for the custom reset date
+  } else {
+    custom_header.style.display = "none"; // Hide the number input for the custom reset date
+    resetDate.style.display = "none"; // Hide the number input for the custom reset date
+  }
+});
+
 /* Show current values */
 function show_expense_values() {
     /* To show the names of the budgets created by the user in the drop-down menu */
@@ -27,8 +43,11 @@ function show_expense_values() {
         curr_expense_index = results[1];
         document.form.expensenametext.value = curr_expense_json.name;
         document.form.expensequantity.value = curr_expense_json.amount;
-        document.form.userbudgets.options[0].text = curr_expense_json.budget_name;
-        document.form.resetperiod.options[0].text = curr_expense_json.reset_period;
+        document.form.userbudgets.options[userbudgets.selectedIndex].text = curr_expense_json.budget_name;
+        document.form.resetperiod.options[resetperiod.selectedIndex].text = curr_expense_json.reset_period;
+        if (curr_expense_json.reset_date != "") {
+            document.form.resetdate.value = curr_expense_json.reset_date;
+        }
     }
 }
 
@@ -51,8 +70,11 @@ form.addEventListener("submit", function(e) {
     if (curr_expense_json) {
         curr_expense_json.name = document.form.expensenametext.value;
         curr_expense_json.amount = document.form.expensequantity.value;
-        curr_expense_json.budget_name = document.form.userbudgets.options[0].text;
-        curr_expense_json.reset_period = document.form.resetperiod.options[0].text;
+        curr_expense_json.budget_name = document.form.userbudgets.options[userbudgets.selectedIndex].text;
+        curr_expense_json.reset_period = document.form.resetperiod.options[resetperiod.selectedIndex].text;
+        if (document.form.resetdate) {
+            curr_expense_json.reset_date = document.form.resetdate.value;
+        }
         localStorage.setItem("expense"+curr_expense_index.toString(), JSON.stringify(curr_expense_json));
         alert("Your changes have been saved");
         window.open("budget.html", "_self");

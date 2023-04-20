@@ -1,10 +1,11 @@
 let switch_theme = document.getElementById("switch-dark-mode");
 let header = document.getElementById("header");
+let my_expenses = document.querySelectorAll(".expense, #create-expense");
 let budget_brand_name = document.getElementById("budget-brand-name");
-let texts = document.querySelectorAll(".subtitle, .subtitles, #title, #slogan, #create-budget-text, #expense-title, #budget-title, #dollars, .info");
+let texts = document.querySelectorAll(".subtitle, .subtitles, #title, #slogan, #create-budget-text, #expense-title, #budget-title, #dollars, .info, .budget-name, .category-budgets, #create-budget-text, .name, .reset-period, #budget-name, #budget-amount-container, #budget-amount-left-container, #budget-category-container, #budget-reset-period-container, #your-expenses-title");
 let menu = document.getElementById("menu-container");
-let contents_menu = document.querySelectorAll("#home, #budgets, #create, #settings");
-let images_menu = document.querySelectorAll("#home-icon, #budgets-icon, #create-icon, #settings-icon");
+let contents_menu = document.querySelectorAll("#home, #budgets, #create, #settings, #paypal");
+let images_menu = document.querySelectorAll("#home-icon, #budgets-icon, #create-icon, #settings-icon, #create-budget-image, .view-budget-image");
 let main = document.getElementById("main-container");
 let sliding_button = document.getElementsByClassName("sliding-button")[0];
 let sliding_circle = document.getElementById("circle");
@@ -45,6 +46,11 @@ setInterval(function() {
         if ((new_budget = document.getElementById("new-budget")) != undefined) {
             new_budget.style.background = "rgb(150, 150, 150)";
         }
+        if (my_expenses) {
+            my_expenses.forEach(function(expense) {
+                expense.style.backgroundColor = "rgb(117, 117, 117)";
+            });
+        }
         if ((footer = document.getElementById("footer")) != undefined) {
             footer.style.backgroundColor = "rgb(117, 117, 117)";
         }
@@ -72,6 +78,11 @@ setInterval(function() {
         }
         if ((new_budget = document.getElementById("new-budget")) != undefined) {
             new_budget.style.background = "black";
+        }
+        if (my_expenses) {
+            my_expenses.forEach(function(expense) {
+                expense.style.backgroundColor = "rgb(31, 31, 31)";
+            });
         }
         if ((footer = document.getElementById("footer")) != undefined) {
             footer.style.backgroundColor = "black";

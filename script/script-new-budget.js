@@ -18,7 +18,7 @@ let budget_json = {
 
 /* Displays the text custom date number input if "Custom Date" is selected from drop-down */
 var dropdown = document.getElementById("resetperiod");
-var resetDate = document.getElementById("reset-date");
+var resetDate = document.getElementById("resetdate");
 var custom_header = document.getElementById("resetCustomHeader")
 dropdown.addEventListener("change", function() 
 {
@@ -47,7 +47,7 @@ form.addEventListener("submit", function(e) {
     var budget_category = category.options[category.selectedIndex].text;
     var reset_period = document.getElementById("resetperiod");
     var budget_reset_period = reset_period.options[reset_period.selectedIndex].text;
-    var reset_date = document.getElementById("reset-date").value;
+    var reset_date = document.getElementById("resetdate").value;
     budget_counter++;
     maximum_budget_counter++;
     localStorage.setItem("budget_counter", budget_counter);

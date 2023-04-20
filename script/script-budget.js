@@ -1,4 +1,3 @@
-/* Display budget info */
 let current_budget_name = localStorage.getItem("selected_budget");
 let current_budget = null;
 if ((maximum_budget_counter = localStorage.getItem("maximum_budget_counter")) == undefined) {
@@ -11,6 +10,7 @@ if ((expense_counter = localStorage.getItem("expense_counter")) == undefined) {
     expense_counter = 0;
 }
 
+/* Display budget info from localStorage */
 for (var i = 0; i < maximum_budget_counter; i++) {
     var budget_text = localStorage.getItem("budget"+(i+1).toString());
     current_budget = JSON.parse(budget_text);
@@ -19,7 +19,13 @@ for (var i = 0; i < maximum_budget_counter; i++) {
         document.getElementById("budget-amount").innerHTML = "$"+current_budget.amount;
         update_budget_amount_left(current_budget);
         document.getElementById("budget-category").innerHTML = current_budget.category;
-        document.getElementById("budget-reset-period").innerHTML = current_budget.reset_period;
+        if (current_budget.reset_date != "") {
+            var budget_reset_period = "Day "+current_budget.reset_date + " of each month";
+        }
+        else {
+            var budget_reset_period = current_budget.reset_period;
+        }
+        document.getElementById("budget-reset-period").innerHTML = budget_reset_period;
         get_expenses(current_budget_name);
         break;
     }
@@ -33,7 +39,12 @@ function get_expenses(current_budget_name) {
         if (expense_json && expense_json.budget_name == current_budget_name) {
             var expense_name = expense_json.name;
             var expense_amount = expense_json.amount;
-            var expense_reset_period = expense_json.reset_period;
+            if (expense_json.reset_date != "") {
+                var expense_reset_period = "Day "+expense_json.reset_date + " of each month";
+            }
+            else {
+                var expense_reset_period = expense_json.reset_period;
+            }
             add_expense(expense_name, expense_amount, expense_reset_period);
         }
     }
