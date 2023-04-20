@@ -16,7 +16,8 @@ let expense_json = {
     "amount": "",
     "budget_name": "",
     "reset_period": "",
-    "reset_date": ""
+    "reset_date": "",
+    "creation_date": ""
 }
 
 /* Displays the text custom date number input if "Custom Date" is selected from drop-down */
@@ -60,12 +61,13 @@ form.addEventListener("submit", function(e) {
     expense_json.budget_name = budget_name;
     expense_json.reset_period = expense_reset_period;
     expense_json.reset_date = reset_date;
+    expense_json.creation_date = new Date().toISOString().slice(0, 10);
     var json_text = JSON.stringify(expense_json);
     localStorage.setItem("expense"+maximum_expense_counter.toString(), json_text);
     alert("Your expense has been saved");
     form.reset();
     localStorage.setItem("selected_budget", budget_name);
-    window.open("budget.html", "_self");
+    window.open("budget.html", "_self");6
 });
 
 /* To show the names of the budgets created by the user in the drop-down menu */

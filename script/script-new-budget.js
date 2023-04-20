@@ -13,7 +13,8 @@ let budget_json = {
     "amount": "",
     "category": "",
     "reset_period": "",
-    "reset_date": ""
+    "reset_date": "",
+    "creation_date": ""
 }
 
 /* Displays the text custom date number input if "Custom Date" is selected from drop-down */
@@ -57,6 +58,7 @@ form.addEventListener("submit", function(e) {
     budget_json.category = budget_category;
     budget_json.reset_period = budget_reset_period;
     budget_json.reset_date = reset_date;
+    budget_json.creation_date = new Date().toISOString().slice(0, 10);
     var json_text = JSON.stringify(budget_json);
     localStorage.setItem("budget"+maximum_budget_counter.toString(), json_text);
     alert("Your budget has been saved");

@@ -5,6 +5,12 @@ if ((budget_counter = localStorage.getItem("budget_counter")) == undefined) {
 if ((maximum_budget_counter = localStorage.getItem("maximum_budget_counter")) == undefined) {
     maximum_budget_counter = 0;
 }
+if ((expense_counter = localStorage.getItem("expense_counter")) == undefined) {
+    expense_counter = 0;
+}
+if ((maximum_expense_counter = localStorage.getItem("maximum_expense_counter")) == undefined) {
+    maximum_expense_counter = 0;
+}
 let selected_category = localStorage.getItem("selected_category");
 document.getElementsByClassName("category-budgets")[0].innerHTML = selected_category +" Budgets";
 
@@ -129,6 +135,16 @@ delete_button_list.forEach(function(delete_button) {
         if (response) {
             // get the budget the user clicked on
             var budget = delete_button.parentElement;
+            //delete any expenses related to the budget the user wants to delete
+            for (var i=0; i < maximum_expense_counter; i++) {
+                var curr_expense_text = localStorage.getItem("expense"+(i+1).toString());
+                var curr_expense_json = JSON.parse(curr_expense_text);
+                if (curr_expense_json && curr_expense_json.budget_name == budget.lastChild.previousSibling.previousSibling.innerHTML) {
+                    localStorage.removeItem("expense"+(i+1).toString());
+                    expense_counter--;
+                    localStorage.setItem("expense_counter", expense_counter);
+                }
+            }
             // find the budget in local storage and delete it
             for (var i=0; i < maximum_budget_counter; i++) {
                 var curr_budget_text = localStorage.getItem("budget"+(i+1).toString());
