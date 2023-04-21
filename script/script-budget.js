@@ -17,7 +17,7 @@ for (var i = 0; i < maximum_budget_counter; i++) {
     if (current_budget && current_budget.name == current_budget_name) {
         document.getElementById("budget-name").innerHTML = current_budget.name;
         document.getElementById("budget-amount").innerHTML = "$"+current_budget.amount;
-        update_budget_amount_left(current_budget);
+        update_budget_amount_left(current_budget, i+1);
         document.getElementById("budget-category").innerHTML = current_budget.category;
         if (current_budget.reset_date != "") {
             var budget_reset_period = "Day "+current_budget.reset_date + " of each month";
@@ -98,7 +98,7 @@ function add_expense(expense_name, expense_amount, expense_reset_period) {
 }
 
 /* Update budget amount left each time an expense is added or deleted */
-function update_budget_amount_left(current_budget) {
+function update_budget_amount_left(current_budget, current_budget_index) {
     var expenses_total = current_budget.amount;
     for (var i = 0; i < maximum_expense_counter; i++) {
         var expense_text = localStorage.getItem("expense"+(i+1).toString());
@@ -107,6 +107,8 @@ function update_budget_amount_left(current_budget) {
             expenses_total -= expense_json.amount;
         }
     }
+    current_budget.amount_left = expenses_total.toString();
+    localStorage.setItem("budget"+current_budget_index.toString(), JSON.stringify(current_budget));
     if (expenses_total > 0) {
         document.getElementById("budget-amount-left").innerHTML = "$"+expenses_total;
     }

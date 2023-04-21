@@ -11,6 +11,7 @@ if ((maximum_budget_counter = localStorage.getItem("maximum_budget_counter")) ==
 let budget_json = {
     "name": "",
     "amount": "",
+    "amount_left": "",
     "category": "",
     "reset_period": "",
     "reset_date": "",
@@ -55,6 +56,7 @@ form.addEventListener("submit", function(e) {
     localStorage.setItem("maximum_budget_counter", maximum_budget_counter);
     budget_json.name = budget_name;
     budget_json.amount = budget_amount;
+    budget_json.amount_left = budget_amount;
     budget_json.category = budget_category;
     budget_json.reset_period = budget_reset_period;
     budget_json.reset_date = reset_date;
