@@ -21,7 +21,7 @@ for (var i = 0; i < maximum_budget_counter; i++) {
         if (budget_json && budget_json.category == selected_category) {
             var budget_name = budget_json.name;
             var budget_amount = budget_json.amount;
-            if (budget_json.reset_date != "") {
+            if (budget_json.reset_period == "Custom Date") {
                 var budget_reset_period = "Day "+budget_json.reset_date + " of each month";
             }
             else {

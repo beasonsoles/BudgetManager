@@ -68,6 +68,7 @@ let form = document.getElementById("edit-expense");
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     if (curr_expense_json) {
+        var previous_amount = curr_expense_json.amount;
         curr_expense_json.name = document.form.expensenametext.value;
         curr_expense_json.amount = document.form.expensequantity.value;
         curr_expense_json.budget_name = document.form.userbudgets.options[userbudgets.selectedIndex].text;
@@ -76,6 +77,11 @@ form.addEventListener("submit", function(e) {
             curr_expense_json.reset_date = document.form.resetdate.value;
         }
         localStorage.setItem("expense"+curr_expense_index.toString(), JSON.stringify(curr_expense_json));
+        var results = get_budget_json(curr_expense_json.budget_name);
+        var budget_json = results[0];
+        var budget_json_index = results[1];
+        budget_json.amount_left = (parseFloat(budget_json.amount_left) - parseFloat(curr_expense_json.amount) + parseFloat(previous_amount)).toString();
+        localStorage.setItem("budget"+budget_json_index.toString(), JSON.stringify(budget_json));
         alert("Your changes have been saved");
         window.open("budget.html", "_self");
     }
@@ -92,6 +98,16 @@ function get_expense_json(selected_expense_name) {
         var curr_expense_index = i+1;
         if (curr_expense_json && selected_expense_name == curr_expense_json.name) {
             return [curr_expense_json, curr_expense_index];
+        }
+    }
+}
+
+function get_budget_json(budget_name) { //look for the budget with the specified name
+    for (var i=0; i < maximum_budget_counter; i++) {
+        var curr_budget_text = localStorage.getItem("budget"+(i+1).toString());
+        var curr_budget_json = JSON.parse(curr_budget_text);
+        if (curr_budget_json && budget_name == curr_budget_json.name) {
+            return [curr_budget_json, i+1];
         }
     }
 }

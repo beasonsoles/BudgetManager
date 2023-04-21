@@ -62,12 +62,16 @@ form.addEventListener("submit", function(e) {
     expense_json.reset_period = expense_reset_period;
     expense_json.reset_date = reset_date;
     expense_json.last_reset = new Date().toISOString().slice(0, 10);
-    var json_text = JSON.stringify(expense_json);
-    localStorage.setItem("expense"+maximum_expense_counter.toString(), json_text);
+    localStorage.setItem("expense"+maximum_expense_counter.toString(), JSON.stringify(expense_json));
+    var results = get_budget_json(expense_json.budget_name);
+    var budget_json = results[0];
+    var budget_json_index = results[1];
+    budget_json.amount_left = (parseFloat(budget_json.amount_left) - parseFloat(expense_json.amount)).toString();
+    localStorage.setItem("budget"+budget_json_index.toString(), JSON.stringify(budget_json));
     alert("Your expense has been saved");
     form.reset();
     localStorage.setItem("selected_budget", budget_name);
-    window.open("budget.html", "_self");6
+    window.open("budget.html", "_self");
 });
 
 /* To show the names of the budgets created by the user in the drop-down menu */
@@ -105,6 +109,16 @@ function get_expense_json(expense_name, budget_name) {
         if (curr_expense_json && expense_name == curr_expense_json.name && budget_name == curr_expense_json.budget_name) {
             //expense already exists
             return true;
+        }
+    }
+}
+
+function get_budget_json(budget_name) { //look for the budget with the specified name
+    for (var i=0; i < maximum_budget_counter; i++) {
+        var curr_budget_text = localStorage.getItem("budget"+(i+1).toString());
+        var curr_budget_json = JSON.parse(curr_budget_text);
+        if (curr_budget_json && budget_name == curr_budget_json.name) {
+            return [curr_budget_json, i+1];
         }
     }
 }

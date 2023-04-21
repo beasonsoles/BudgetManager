@@ -8,31 +8,42 @@ if ((expense_counter = localStorage.getItem("expense_counter")) == undefined) {
     expense_counter = 0;
 }
 let today = new Date().toISOString().slice(0, 10);
+
 /* Reset the budget when the reset period is over*/
 for (var i = 0; i < maximum_budget_counter; i++) {
-    var curr_budget_text = localStorage.getItem("budget"+(i+1).toString());
-    var curr_budget_json = JSON.parse(curr_budget_text);
-    if (curr_budget_json) {
-        switch(curr_budget_json.reset_period) {
+    var current_budget_text = localStorage.getItem("budget"+(i+1).toString());
+    var current_budget_json = JSON.parse(current_budget_text);
+    if (current_budget_json) {
+        switch(current_budget_json.reset_period) {
             case "Daily":
-                elapsed_time_since_reset(1, curr_budget_json, i+1);
-                break;
+                if (elapsed_time_since_reset(1, current_budget_json)) {
+                    reset_budget(current_budget_json, i+1);
+                    break;
+                }
             case "Weekly":
-                elapsed_time_since_reset(7, curr_budget_json, i+1);
-                break;
+                if (elapsed_time_since_reset(7, current_budget_json)) {
+                    reset_budget(current_budget_json, i+1);
+                    break;
+                }
             case "Monthly":
-                elapsed_time_since_reset(30, curr_budget_json, i+1);
-                break;
+                if (elapsed_time_since_reset(30, current_budget_json)) {
+                    reset_budget(current_budget_json, i+1);
+                    break;
+                }
             case "Quarterly":
-                elapsed_time_since_reset(90, curr_budget_json, i+1);
-                break;
+                if (elapsed_time_since_reset(90, current_budget_json)) {
+                    reset_budget(current_budget_json, i+1);
+                    break;
+                }
             case "Yearly":
-                elapsed_time_since_reset(365, curr_budget_json, i+1);
-                break;
+                if (elapsed_time_since_reset(365, current_budget_json)) {
+                    reset_budget(current_budget_json, i+1);
+                    break;
+                }
             case "Custom Date":
-                var a = ('0'+curr_budget_json.reset_date).slice(-2);
-                if (today.slice(-2) == ('0'+curr_budget_json.reset_date).slice(-2)) {
-                    reset_budget(curr_budget_json, i+1);
+                var a = ('0'+current_budget_json.reset_date).slice(-2);
+                if (today.slice(-2) == ('0'+current_budget_json.reset_date).slice(-2)) {
+                    reset_budget(current_budget_json, i+1);
                     break;
                 } else { break; }
             default: 
@@ -42,35 +53,87 @@ for (var i = 0; i < maximum_budget_counter; i++) {
 }
 
 /* Reset the expense when the reset period is over*/ 
-
-
-
+for (var i=0; i < maximum_expense_counter; i++) {
+    var current_expense_text = localStorage.getItem("expense"+(i+1).toString());
+    var current_expense_json = JSON.parse(current_expense_text);
+    if (current_expense_json) {
+        switch(current_expense_json.reset_period) {
+            case "Daily":
+                if (elapsed_time_since_reset(1, current_expense_json)) {
+                    reset_expense(current_expense_json, i+1);
+                    break;
+                }
+            case "Weekly":
+                if (elapsed_time_since_reset(7, current_expense_json)) {
+                    reset_expense(current_expense_json, i+1);
+                    break;
+                }
+            case "Monthly":
+                if (elapsed_time_since_reset(30, current_expense_json)) {
+                    reset_expense(current_expense_json, i+1);
+                    break;
+                }
+            case "Quarterly":
+                if (elapsed_time_since_reset(90, current_expense_json)) {
+                    reset_expense(current_expense_json, i+1);
+                    break;
+                }
+            case "Yearly":
+                if (elapsed_time_since_reset(365, current_expense_json)) {
+                    reset_expense(current_expense_json, i+1);
+                    break;
+                }
+            case "Custom Date":
+                var a = ('0'+current_expense_json.reset_date).slice(-2);
+                if (today.slice(-2) == ('0'+current_expense_json.reset_date).slice(-2)) {
+                    reset_expense(current_expense_json, i+1);
+                    break;
+                } else { break; }
+            default: 
+                break;
+        }
+    }
+}
 
 
 /* Check how long it's been since the last reset date*/
-function elapsed_time_since_reset(offset, curr_budget_json, curr_budget_index) {
-    if (new Date(curr_budget_json.last_reset)/(1000*24*60*60) + offset == new Date(today)/(1000*24*60*60)) { // reset has to be done today
-        reset_budget(curr_budget_json, curr_budget_index);
+function elapsed_time_since_reset(offset, curr_json) {
+    if (new Date(curr_json.last_reset)/(1000*24*60*60) + offset == new Date(today)/(1000*24*60*60)) { // reset has to be done today
+        return true;
     }
     else {
         //reset has already been done today
-        return; // do not reset again
+        return false; // do not reset again
     }
 }
 
 /* To reset the last reset date and the amount left of the budget */
-function reset_budget(curr_budget_json, curr_budget_index) {
-    curr_budget_json.last_reset = today; // set the last_reset key to today
-    curr_budget_json.amount_left = curr_budget_json.amount; // reset the budget amount left to original budget amount
-    localStorage.setItem("budget"+curr_budget_index.toString(), JSON.stringify(curr_budget_json)); // update budget
+function reset_budget(current_budget_json, current_budget_index) {
+    current_budget_json.last_reset = today; // set the last_reset key to today
+    current_budget_json.amount_left = current_budget_json.amount; // reset the budget amount left to original budget amount
+    localStorage.setItem("budget"+current_budget_index.toString(), JSON.stringify(current_budget_json)); // update budget
     //delete the expenses associated with the budget
     for (var i=0; i < maximum_expense_counter; i++) {
-        var curr_expense_text = localStorage.getItem("expense"+(i+1).toString());
-        var curr_expense_json = JSON.parse(curr_expense_text);
-        if (curr_expense_json && curr_expense_json.budget_name == curr_budget_json.name) {
+        var current_expense_text = localStorage.getItem("expense"+(i+1).toString());
+        var current_expense_json = JSON.parse(current_expense_text);
+        if (current_expense_json && current_expense_json.budget_name == current_budget_json.name) {
             localStorage.removeItem("expense"+(i+1).toString());
             expense_counter--;
             localStorage.setItem("expense_counter", expense_counter);
+        }
+    }
+    location.reload();
+}
+
+function reset_expense(current_expense_json, current_expense_index) {
+    current_expense_json.last_reset = today; // set the last_reset key to today
+    localStorage.setItem("expense"+current_expense_index.toString(), JSON.stringify(current_expense_json)); // update expense
+    for (var i = 0; i < maximum_budget_counter; i++) { // look for the budget to which the expense belongs
+        var current_budget_text = localStorage.getItem("budget"+(i+1).toString());
+        var current_budget_json = JSON.parse(current_budget_text);
+        if (current_budget_json && current_expense_json.budget_name == current_budget_json.name) {
+            current_budget_json.amount_left -= current_expense_json.amount; // subtract expense amount from amount left in the budget
+            localStorage.setItem("budget"+(i+1).toString(), JSON.stringify(current_budget_json)); // update budget
         }
     }
     location.reload();

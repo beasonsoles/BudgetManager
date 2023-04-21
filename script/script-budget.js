@@ -1,3 +1,7 @@
+document.addEventListener("load", function(){
+    location.reload();
+});
+
 let current_budget_name = localStorage.getItem("selected_budget");
 let current_budget = null;
 if ((maximum_budget_counter = localStorage.getItem("maximum_budget_counter")) == undefined) {
@@ -17,7 +21,8 @@ for (var i = 0; i < maximum_budget_counter; i++) {
     if (current_budget && current_budget.name == current_budget_name) {
         document.getElementById("budget-name").innerHTML = current_budget.name;
         document.getElementById("budget-amount").innerHTML = "$"+current_budget.amount;
-        update_budget_amount_left(current_budget, i+1);
+        display_amount_left(current_budget);
+        //update_budget_amount_left(current_budget, i+1);
         document.getElementById("budget-category").innerHTML = current_budget.category;
         if (current_budget.reset_date != "") {
             var budget_reset_period = "Day "+current_budget.reset_date + " of each month";
@@ -39,7 +44,7 @@ function get_expenses(current_budget_name) {
         if (expense_json && expense_json.budget_name == current_budget_name) {
             var expense_name = expense_json.name;
             var expense_amount = expense_json.amount;
-            if (expense_json.reset_date != "") {
+            if (expense_json.reset_period == "Custom Date") {
                 var expense_reset_period = "Day "+expense_json.reset_date + " of each month";
             }
             else {
@@ -97,26 +102,6 @@ function add_expense(expense_name, expense_amount, expense_reset_period) {
     reset_period.innerHTML = "Resets: "+expense_reset_period;
 }
 
-/* Update budget amount left each time an expense is added or deleted */
-function update_budget_amount_left(current_budget, current_budget_index) {
-    var expenses_total = current_budget.amount;
-    for (var i = 0; i < maximum_expense_counter; i++) {
-        var expense_text = localStorage.getItem("expense"+(i+1).toString());
-        var expense_json = JSON.parse(expense_text);
-        if (expense_json && expense_json.budget_name == current_budget.name) {
-            expenses_total -= expense_json.amount;
-        }
-    }
-    current_budget.amount_left = expenses_total.toString();
-    localStorage.setItem("budget"+current_budget_index.toString(), JSON.stringify(current_budget));
-    if (expenses_total > 0) {
-        document.getElementById("budget-amount-left").innerHTML = "$"+expenses_total;
-    }
-    else {
-        document.getElementById("budget-amount-left").innerHTML = "-$"+Math.abs(expenses_total);
-    }
-}
-
 /* To redirect the user to the expense creation page*/
 let create_expense_button = document.getElementById("create-expense");
 create_expense_button.addEventListener("click", function() {
@@ -155,24 +140,51 @@ delete_button_list.forEach(function(delete_button) {
     delete_button.addEventListener("mouseout", function() {
         delete_button.firstChild.src = "images/delete.png";
     });
-    // redirect the user to the expense deletion page
     delete_button.addEventListener("click", function() {
         var response = confirm("Are you sure you want to delete this expense?");
         if (response) {
             // get the expense the user clicked on
             var expense = delete_button.parentElement;
-            // find the expense in local storage and delete it
+            // find the expense in local storage, update the amount left of the budget, and delete it
             for (var i=0; i < maximum_expense_counter; i++) {
                 var curr_expense_text = localStorage.getItem("expense"+(i+1).toString());
                 var curr_expense_json = JSON.parse(curr_expense_text);
                 if (curr_expense_json && expense.firstChild.nextSibling.nextSibling.innerHTML == curr_expense_json.name) {
+                    // find the budget to which the expense belongs and update the amount left
+                    var results = get_budget_json(curr_expense_json.budget_name);
+                    var curr_budget_json = results[0];
+                    var curr_budget_index = results[1];
+                    if (curr_budget_json) {
+                        curr_budget_json.amount_left = (parseFloat(curr_budget_json.amount_left) + parseFloat(curr_expense_json.amount)).toString();
+                        localStorage.setItem("budget"+curr_budget_index.toString(), JSON.stringify(curr_budget_json));
+                        display_amount_left(curr_budget_json);
+                    }
+                    //delete the expense
                     localStorage.removeItem("expense"+(i+1).toString());
                     expense_counter--;
                     localStorage.setItem("expense_counter", expense_counter);
                     expense.remove();
-                    update_budget_amount_left(current_budget);
                 }
             }
         }
     });
 });
+
+function get_budget_json(budget_name) { //look for the budget with the specified name
+    for (var i=0; i < maximum_budget_counter; i++) {
+        var curr_budget_text = localStorage.getItem("budget"+(i+1).toString());
+        var curr_budget_json = JSON.parse(curr_budget_text);
+        if (curr_budget_json && budget_name == curr_budget_json.name) {
+            return [curr_budget_json, i+1];
+        }
+    }
+}
+
+function display_amount_left(current_budget) {
+    if (parseInt(current_budget.amount_left) > 0) {
+        document.getElementById("budget-amount-left").innerHTML = "$"+current_budget.amount_left;
+    }
+    else {
+        document.getElementById("budget-amount-left").innerHTML = "-$"+Math.abs(current_budget.amount_left);
+    }
+}
