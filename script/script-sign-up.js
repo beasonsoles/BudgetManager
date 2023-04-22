@@ -2,8 +2,6 @@ let form = document.getElementById("sign-up-form");
 let facebook = document.getElementById("facebook-link");
 let google = document.getElementById("google-link");
 let log_in = document.getElementById("go-to-log-in");
-//let new_file = document.getElementById("userpicture");
-//let reader = new FileReader();
 if ((user_counter = localStorage.getItem("user_counter")) == undefined) {
     user_counter = 0;
 }
@@ -19,16 +17,6 @@ google.addEventListener("click", function() {
 log_in.addEventListener("click", function() {
     window.open("log-in-form.html", "_self");
 });
-
-/*new_file.addEventListener("change", function(e) {
-    foto_seleccionada = e.currentTarget.files.length;
-    if (foto_seleccionada != 0) {
-        reader.addEventListener("load", function(e) {
-            localStorage.setItem("userpicture_"+(parseInt(user_counter)+1).toString(), e.target.result);
-        });
-        reader.readAsDataURL(new_file.files[0]);
-    }
-});*/
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();

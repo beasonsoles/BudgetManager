@@ -63,9 +63,7 @@ form.addEventListener("submit", function(e) {
     expense_json.reset_date = reset_date;
     expense_json.last_reset = new Date().toISOString().slice(0, 10);
     localStorage.setItem("expense"+maximum_expense_counter.toString(), JSON.stringify(expense_json));
-    var results = get_budget_json(expense_json.budget_name);
-    var budget_json = results[0];
-    var budget_json_index = results[1];
+    var [budget_json, budget_json_index] = get_budget_json(expense_json.budget_name);
     budget_json.amount_left = (parseFloat(budget_json.amount_left) - parseFloat(expense_json.amount)).toFixed(2);
     localStorage.setItem("budget"+budget_json_index.toString(), JSON.stringify(budget_json));
     alert("Your expense has been saved");

@@ -11,8 +11,7 @@ let today = new Date().toISOString().slice(0, 10);
 
 /* Reset the budget when the reset period is over*/
 for (var i = 0; i < maximum_budget_counter; i++) {
-    var current_budget_text = localStorage.getItem("budget"+(i+1).toString());
-    var current_budget_json = JSON.parse(current_budget_text);
+    var current_budget_json = JSON.parse(localStorage.getItem("budget"+(i+1).toString()));
     if (current_budget_json) {
         switch(current_budget_json.reset_period) {
             case "Daily":
@@ -54,8 +53,7 @@ for (var i = 0; i < maximum_budget_counter; i++) {
 
 /* Reset the expense when the reset period is over*/ 
 for (var i=0; i < maximum_expense_counter; i++) {
-    var current_expense_text = localStorage.getItem("expense"+(i+1).toString());
-    var current_expense_json = JSON.parse(current_expense_text);
+    var current_expense_json = JSON.parse(localStorage.getItem("expense"+(i+1).toString()));
     if (current_expense_json) {
         switch(current_expense_json.reset_period) {
             case "Daily":
@@ -113,8 +111,7 @@ function reset_budget(current_budget_json, current_budget_index) {
     localStorage.setItem("budget"+current_budget_index.toString(), JSON.stringify(current_budget_json)); // update budget
     //delete the expenses associated with the budget
     for (var i=0; i < maximum_expense_counter; i++) {
-        var current_expense_text = localStorage.getItem("expense"+(i+1).toString());
-        var current_expense_json = JSON.parse(current_expense_text);
+        var current_expense_json = JSON.parse(localStorage.getItem("expense"+(i+1).toString()));
         if (current_expense_json && current_expense_json.budget_name == current_budget_json.name) {
             localStorage.removeItem("expense"+(i+1).toString());
             expense_counter--;
@@ -128,8 +125,7 @@ function reset_expense(current_expense_json, current_expense_index) {
     current_expense_json.last_reset = today; // set the last_reset key to today
     localStorage.setItem("expense"+current_expense_index.toString(), JSON.stringify(current_expense_json)); // update expense
     for (var i = 0; i < maximum_budget_counter; i++) { // look for the budget to which the expense belongs
-        var current_budget_text = localStorage.getItem("budget"+(i+1).toString());
-        var current_budget_json = JSON.parse(current_budget_text);
+        var current_budget_json = JSON.parse(localStorage.getItem("budget"+(i+1).toString()));
         if (current_budget_json && current_expense_json.budget_name == current_budget_json.name) {
             current_budget_json.amount_left = (parseFloat(current_budget_json.amount_left) - parseFloat(current_expense_json.amount)).toFixed(2); // subtract expense amount from amount left in the budget
             localStorage.setItem("budget"+(i+1).toString(), JSON.stringify(current_budget_json)); // update budget

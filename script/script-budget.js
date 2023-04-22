@@ -146,44 +146,43 @@ delete_button_list.forEach(function(delete_button) {
             // get the expense the user clicked on
             var expense = delete_button.parentElement;
             // find the expense in local storage, update the amount left of the budget, and delete it
-            for (var i=0; i < maximum_expense_counter; i++) {
-                var curr_expense_text = localStorage.getItem("expense"+(i+1).toString());
-                var curr_expense_json = JSON.parse(curr_expense_text);
-                if (curr_expense_json && expense.firstChild.nextSibling.nextSibling.innerHTML == curr_expense_json.name) {
-                    // find the budget to which the expense belongs and update the amount left
-                    var results = get_budget_json(curr_expense_json.budget_name);
-                    var curr_budget_json = results[0];
-                    var curr_budget_index = results[1];
-                    if (curr_budget_json) {
-                        var new_amount_left = (parseFloat(curr_budget_json.amount_left) + parseFloat(curr_expense_json.amount)).toFixed(2);
-                        if (new_amount_left > curr_budget_json.amount) { curr_budget_json.amount_left = curr_budget_json.amount; }
-                        else { curr_budget_json.amount_left = new_amount_left; }
-                        localStorage.setItem("budget"+curr_budget_index.toString(), JSON.stringify(curr_budget_json));
-                        display_amount_left(curr_budget_json);
-                    }
-                    //delete the expense
-                    localStorage.removeItem("expense"+(i+1).toString());
-                    expense_counter--;
-                    localStorage.setItem("expense_counter", expense_counter);
-                    expense.remove();
-                }
-            }
+            var [curr_expense_json, curr_expense_index] = get_expense_json(expense.firstChild.nextSibling.nextSibling.innerHTML, current_budget_name);
+            // find the budget to which the expense belongs and update the amount left
+            var [curr_budget_json, curr_budget_index] = get_budget_json(curr_expense_json.budget_name);
+            var new_amount_left = (parseFloat(curr_budget_json.amount_left) + parseFloat(curr_expense_json.amount)).toFixed(2);
+            if (parseFloat(new_amount_left) > parseFloat(curr_budget_json.amount)) { curr_budget_json.amount_left = curr_budget_json.amount; }
+            else { curr_budget_json.amount_left = new_amount_left; }
+            localStorage.setItem("budget"+curr_budget_index.toString(), JSON.stringify(curr_budget_json));
+            display_amount_left(curr_budget_json);
+            //delete the expense
+            localStorage.removeItem("expense"+curr_expense_index.toString());
+            expense_counter--;
+            localStorage.setItem("expense_counter", expense_counter);
+            expense.remove();
         }
     });
 });
 
 function get_budget_json(budget_name) { //look for the budget with the specified name
     for (var i=0; i < maximum_budget_counter; i++) {
-        var curr_budget_text = localStorage.getItem("budget"+(i+1).toString());
-        var curr_budget_json = JSON.parse(curr_budget_text);
+        var curr_budget_json = JSON.parse(localStorage.getItem("budget"+(i+1).toString()));
         if (curr_budget_json && budget_name == curr_budget_json.name) {
             return [curr_budget_json, i+1];
         }
     }
 }
 
+function get_expense_json(expense_name, budget_name) {
+    for (var i=0; i < maximum_expense_counter; i++) {
+        var curr_expense_json = JSON.parse(localStorage.getItem("expense"+(i+1).toString()));
+        if (curr_expense_json && expense_name == curr_expense_json.name && budget_name == curr_expense_json.budget_name) {
+            return [curr_expense_json, i+1];
+        }
+    }
+}
+
 function display_amount_left(current_budget) {
-    if (parseInt(current_budget.amount_left) >= 0) {
+    if (parseFloat(current_budget.amount_left) >= 0) {
         document.getElementById("budget-amount-left").innerHTML = "$"+current_budget.amount_left;
     }
     else {

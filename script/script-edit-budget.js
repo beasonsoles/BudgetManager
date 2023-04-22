@@ -24,16 +24,12 @@ dropdown.addEventListener("change", function()
 
 /* Show current values */
 // look for the corresponding budget in the database
-let results = get_budget_json(selected_budget_name);
-if (results) {
-    curr_budget_json = results[0];
-    curr_budget_index = results[1];
+[curr_budget_json, curr_budget_index] = get_budget_json(selected_budget_name);
+if (curr_budget_json) {
     document.form.budgetnametext.value = curr_budget_json.name;
     document.form.budgetquantity.value = curr_budget_json.amount;
     document.getElementById("info-category").innerHTML += curr_budget_json.category;
     document.getElementById("info-reset-period").innerHTML += curr_budget_json.reset_period;
-    //document.form.categories.options[categories.selectedIndex].text = curr_budget_json.category;
-    //document.form.resetperiod.options[resetperiod.selectedIndex].text = curr_budget_json.reset_period;
     if (curr_budget_json.reset_date != "") {
         document.form.resetdate.value = curr_budget_json.reset_date;
     }
@@ -67,8 +63,7 @@ form.addEventListener("reset", function(e) {
 
 function get_budget_json(selected_budget_name) {
     for (var i=0; i < maximum_budget_counter; i++) {
-        var curr_budget_text = localStorage.getItem("budget"+(i+1).toString());
-        var curr_budget_json = JSON.parse(curr_budget_text);
+        var curr_budget_json = JSON.parse(localStorage.getItem("budget"+(i+1).toString()));
         var curr_budget_index = i+1;
         if (curr_budget_json && selected_budget_name == curr_budget_json.name) {
             return [curr_budget_json, curr_budget_index];
