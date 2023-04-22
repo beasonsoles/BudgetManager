@@ -181,7 +181,7 @@ function get_budget_json(budget_name) { //look for the budget with the specified
 }
 
 function display_amount_left(current_budget) {
-    if (parseInt(current_budget.amount_left) > 0) {
+    if (parseInt(current_budget.amount_left) >= 0) {
         document.getElementById("budget-amount-left").innerHTML = "$"+current_budget.amount_left;
     }
     else {

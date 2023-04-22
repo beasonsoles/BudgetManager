@@ -84,7 +84,6 @@ for (var i=0; i < maximum_expense_counter; i++) {
                     break;
                 }
             case "Custom Date":
-                var a = ('0'+current_expense_json.reset_date).slice(-2);
                 if (today.slice(-2) == ('0'+current_expense_json.reset_date).slice(-2)) {
                     reset_expense(current_expense_json, i+1);
                     break;
@@ -132,7 +131,8 @@ function reset_expense(current_expense_json, current_expense_index) {
         var current_budget_text = localStorage.getItem("budget"+(i+1).toString());
         var current_budget_json = JSON.parse(current_budget_text);
         if (current_budget_json && current_expense_json.budget_name == current_budget_json.name) {
-            current_budget_json.amount_left -= current_expense_json.amount; // subtract expense amount from amount left in the budget
+            //budget_json.amount_left = (parseFloat(current_budget_json.amount_left) - parseFloat(current_expense_json.amount)).toString();
+            current_budget_json.amount_left = (parseFloat(current_budget_json.amount_left) - parseFloat(current_expense_json.amount)).toString(); // subtract expense amount from amount left in the budget
             localStorage.setItem("budget"+(i+1).toString(), JSON.stringify(current_budget_json)); // update budget
         }
     }
