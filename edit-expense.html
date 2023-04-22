@@ -79,13 +79,17 @@
                       <input type="number" step="0.01" min=0 max=1000000000 id="expensequantity" placeholder=" Amount" required>
                   </div>
                   <div class="select-budget">
-                      <h2 class="subtitles">Select a budget</h2><br>
-                      <select name="userbudgets" id="userbudgets" required></select>
+                      <h2 class="subtitles">Select a budget</h2>
+                      <h3 id="info-budget">Current: </h3><br>
+                      <select name="userbudgets" id="userbudgets" required>
+                        <option value="keepcurrent">--- Keep current ---</option>
+                      </select>
                   </div>
                   <div class="reset-expense">
                     <h2 class="subtitles">Set a reset period</h2>
-                    <h3 class="info">(If the expense is recurrent)</h3><br>
+                    <h3 id="info-reset-period">Current: </h3><br>
                     <select name="reset-period" id="resetperiod" required>
+                      <option value="keepcurrent">--- Keep current ---</option>
                       <option value="never">Never</option>
                       <option value="daily">Daily</option>
                       <option value="weekly">Weekly</option>

@@ -43,8 +43,10 @@ function show_expense_values() {
         curr_expense_index = results[1];
         document.form.expensenametext.value = curr_expense_json.name;
         document.form.expensequantity.value = curr_expense_json.amount;
-        document.form.userbudgets.options[userbudgets.selectedIndex].text = curr_expense_json.budget_name;
-        document.form.resetperiod.options[resetperiod.selectedIndex].text = curr_expense_json.reset_period;
+        document.getElementById("info-budget").innerHTML += curr_expense_json.budget_name;
+        document.getElementById("info-reset-period").innerHTML += curr_expense_json.reset_period;
+        //document.form.userbudgets.options[userbudgets.selectedIndex].text = curr_expense_json.budget_name;
+        //document.form.resetperiod.options[resetperiod.selectedIndex].text = curr_expense_json.reset_period;
         if (curr_expense_json.reset_date != "") {
             document.form.resetdate.value = curr_expense_json.reset_date;
         }
@@ -71,8 +73,12 @@ form.addEventListener("submit", function(e) {
         var previous_amount = curr_expense_json.amount;
         curr_expense_json.name = document.form.expensenametext.value;
         curr_expense_json.amount = document.form.expensequantity.value;
-        curr_expense_json.budget_name = document.form.userbudgets.options[userbudgets.selectedIndex].text;
-        curr_expense_json.reset_period = document.form.resetperiod.options[resetperiod.selectedIndex].text;
+        if (document.form.userbudgets.options[userbudgets.selectedIndex].value != "keepcurrent") {
+            curr_expense_json.budget_name = document.form.userbudgets.options[userbudgets.selectedIndex].text;
+        }
+        if (document.form.resetperiod.options[resetperiod.selectedIndex].value != "keepcurrent") {
+            curr_expense_json.reset_period = document.form.resetperiod.options[resetperiod.selectedIndex].text;
+        }
         if (document.form.resetdate) {
             curr_expense_json.reset_date = document.form.resetdate.value;
         }
@@ -80,7 +86,9 @@ form.addEventListener("submit", function(e) {
         var results = get_budget_json(curr_expense_json.budget_name);
         var budget_json = results[0];
         var budget_json_index = results[1];
-        budget_json.amount_left = (parseFloat(budget_json.amount_left) - parseFloat(curr_expense_json.amount) + parseFloat(previous_amount)).toString();
+        var new_amount_left = (parseFloat(budget_json.amount_left) - parseFloat(curr_expense_json.amount) + parseFloat(previous_amount)).toFixed(2);
+        if (new_amount_left > budget_json.amount) { budget_json.amount_left = budget_json.amount; }
+        else { budget_json.amount_left = new_amount_left; }
         localStorage.setItem("budget"+budget_json_index.toString(), JSON.stringify(budget_json));
         alert("Your changes have been saved");
         window.open("budget.html", "_self");

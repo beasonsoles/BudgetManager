@@ -131,8 +131,7 @@ function reset_expense(current_expense_json, current_expense_index) {
         var current_budget_text = localStorage.getItem("budget"+(i+1).toString());
         var current_budget_json = JSON.parse(current_budget_text);
         if (current_budget_json && current_expense_json.budget_name == current_budget_json.name) {
-            //budget_json.amount_left = (parseFloat(current_budget_json.amount_left) - parseFloat(current_expense_json.amount)).toString();
-            current_budget_json.amount_left = (parseFloat(current_budget_json.amount_left) - parseFloat(current_expense_json.amount)).toString(); // subtract expense amount from amount left in the budget
+            current_budget_json.amount_left = (parseFloat(current_budget_json.amount_left) - parseFloat(current_expense_json.amount)).toFixed(2); // subtract expense amount from amount left in the budget
             localStorage.setItem("budget"+(i+1).toString(), JSON.stringify(current_budget_json)); // update budget
         }
     }

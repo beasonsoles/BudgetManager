@@ -30,10 +30,10 @@ if (results) {
     curr_budget_index = results[1];
     document.form.budgetnametext.value = curr_budget_json.name;
     document.form.budgetquantity.value = curr_budget_json.amount;
-    //----------- Automobile option is being deleted (add at the bottom) ----------
-    //document.form.categories.prop("selectedIndex", 0);
-    document.form.categories.options[categories.selectedIndex].text = curr_budget_json.category;
-    document.form.resetperiod.options[resetperiod.selectedIndex].text = curr_budget_json.reset_period;
+    document.getElementById("info-category").innerHTML += curr_budget_json.category;
+    document.getElementById("info-reset-period").innerHTML += curr_budget_json.reset_period;
+    //document.form.categories.options[categories.selectedIndex].text = curr_budget_json.category;
+    //document.form.resetperiod.options[resetperiod.selectedIndex].text = curr_budget_json.reset_period;
     if (curr_budget_json.reset_date != "") {
         document.form.resetdate.value = curr_budget_json.reset_date;
     }
@@ -46,8 +46,12 @@ form.addEventListener("submit", function(e) {
     if (curr_budget_json) {
         curr_budget_json.name = document.form.budgetnametext.value;
         curr_budget_json.amount = document.form.budgetquantity.value;
-        curr_budget_json.category = document.form.categories.options[categories.selectedIndex].text;
-        curr_budget_json.reset_period = document.form.resetperiod.options[resetperiod.selectedIndex].text;
+        if (document.form.categories.options[categories.selectedIndex].value != "keepcurrent") {
+            curr_budget_json.category = document.form.categories.options[categories.selectedIndex].text;
+        }
+        if (document.form.resetperiod.options[resetperiod.selectedIndex].value != "keepcurrent") {
+            curr_budget_json.reset_period = document.form.resetperiod.options[resetperiod.selectedIndex].text;
+        }
         if (document.form.resetdate) {
             curr_budget_json.reset_date = document.form.resetdate.value;
         }

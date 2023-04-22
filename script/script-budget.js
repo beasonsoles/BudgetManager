@@ -155,7 +155,9 @@ delete_button_list.forEach(function(delete_button) {
                     var curr_budget_json = results[0];
                     var curr_budget_index = results[1];
                     if (curr_budget_json) {
-                        curr_budget_json.amount_left = (parseFloat(curr_budget_json.amount_left) + parseFloat(curr_expense_json.amount)).toString();
+                        var new_amount_left = (parseFloat(curr_budget_json.amount_left) + parseFloat(curr_expense_json.amount)).toFixed(2);
+                        if (new_amount_left > curr_budget_json.amount) { curr_budget_json.amount_left = curr_budget_json.amount; }
+                        else { curr_budget_json.amount_left = new_amount_left; }
                         localStorage.setItem("budget"+curr_budget_index.toString(), JSON.stringify(curr_budget_json));
                         display_amount_left(curr_budget_json);
                     }
