@@ -40,7 +40,7 @@ function show_expense_values() {
     [curr_expense_json, curr_expense_index] = get_expense_json(selected_expense_name);
     if (curr_expense_json) {
         document.form.expensenametext.value = curr_expense_json.name;
-        document.form.expensequantity.value = curr_expense_json.amount;
+        document.form.editexpensequantity.value = curr_expense_json.amount;
         document.getElementById("info-budget").innerHTML += curr_expense_json.budget_name;
         document.getElementById("info-reset-period").innerHTML += curr_expense_json.reset_period;
         if (curr_expense_json.reset_date != "") {
@@ -65,7 +65,7 @@ form.addEventListener("submit", function(e) {
         var previous_amount = curr_expense_json.amount; //store previous amount of the expense
         var previous_budget_name = curr_expense_json.budget_name; //store previous budget to which the expense belongs
         curr_expense_json.name = document.form.expensenametext.value;
-        curr_expense_json.amount = document.form.expensequantity.value;
+        curr_expense_json.amount = document.form.editexpensequantity.value;
         var selected_budget = document.form.userbudgets.options[userbudgets.selectedIndex];
         if (selected_budget.value != "keepcurrent") {
             curr_expense_json.budget_name = selected_budget.text;

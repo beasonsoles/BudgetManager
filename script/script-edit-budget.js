@@ -42,6 +42,7 @@ form.addEventListener("submit", function(e) {
     if (curr_budget_json) {
         curr_budget_json.name = document.form.budgetnametext.value;
         curr_budget_json.amount = document.form.budgetquantity.value;
+        curr_budget_json.amount_left = document.form.budgetquantity.value;
         if (document.form.categories.options[categories.selectedIndex].value != "keepcurrent") {
             curr_budget_json.category = document.form.categories.options[categories.selectedIndex].text;
         }

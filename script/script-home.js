@@ -1,3 +1,7 @@
+if ((maximum_budget_counter = localStorage.getItem("maximum_budget_counter")) == undefined) {
+    maximum_budget_counter = 0;
+}
+
 /* Show all expenses and redirect the user to the budget creation page*/
 let new_budget_button = document.querySelector("#create-budget-image");
 
@@ -11,6 +15,27 @@ if ((expense_counter = localStorage.getItem("expense_counter")) == undefined) {
 }
 if ((maximum_expense_counter = localStorage.getItem("maximum_expense_counter")) == undefined) {
     maximum_expense_counter = 0;
+}
+
+display_total();
+
+function display_total() {
+    var budgets_total = 0; // will store the total budgeted amount
+    var amount_left_total = 0; // will store the total amount left after all the expenses
+    // add up all budgets and show it on the homepage
+    for (var i=0; i < maximum_budget_counter; i++) {
+        var budget_json = JSON.parse(localStorage.getItem("budget"+(i+1).toString()));
+        if (budget_json) {
+            budgets_total += parseFloat(budget_json.amount);
+            amount_left_total += parseFloat(budget_json.amount_left);
+        }
+    }
+    document.getElementById("total-amount").innerHTML = "$" + parseFloat(budgets_total).toFixed(2);
+    if (amount_left_total >= 0) {
+        document.getElementById("total-amount-left").innerHTML = "$" + parseFloat(amount_left_total).toFixed(2);
+    } else {
+        document.getElementById("total-amount-left").innerHTML = "-$" + Math.abs(parseFloat(amount_left_total)).toFixed(2);
+    } 
 }
 
 /* To display the expenses created with their budget */
@@ -46,8 +71,8 @@ function add_expense(expense_name, expense_amount, expense_budget_name, expense_
     // add classes to each of the new elements
     expense.classList.add("expense-home");
     name.classList.add("name");
-    amount.classList.add("expense-amount");
-    budget_name.classList.add("budget-name");
+    amount.classList.add("expense-amount-home");
+    budget_name.classList.add("budget-name-home");
     reset_period.classList.add("reset-period");
     edit_expense.classList.add("edit-expense");
     edit_expense_img.classList.add("edit-expense-img");
@@ -68,7 +93,7 @@ function add_expense(expense_name, expense_amount, expense_budget_name, expense_
     edit_expense_img.src = "images/edit.png";
     delete_expense_img.src = "images/delete.png";
     name.innerHTML = expense_name;
-    amount.innerHTML = "-$"+expense_amount;
+    amount.innerHTML = "-$"+parseFloat(expense_amount).toFixed(2);
     budget_name.innerHTML = expense_budget_name;
     reset_period.innerHTML = "Resets: "+expense_reset_period;
 } 
@@ -80,7 +105,7 @@ create_expense_button.addEventListener("click", function() {
 });
 
 /* To let the user edit the expense */
-/*let edit_button_list = document.querySelectorAll(".edit-expense");
+let edit_button_list = document.querySelectorAll(".edit-expense");
 edit_button_list.forEach(function(edit_button) {
     // change the image of the edit button when user hovers over it
     edit_button.addEventListener("mouseover", function() {
@@ -91,14 +116,14 @@ edit_button_list.forEach(function(edit_button) {
     });
     // redirect the user to the expense edition page 
     edit_button.addEventListener("click", function() {
-        var selected_expense = edit_button.parentElement.lastChild.previousSibling.previousSibling.innerHTML;
+        var selected_expense = edit_button.parentElement.firstChild.nextSibling.nextSibling.innerHTML;
         localStorage.setItem("selected_expense", selected_expense);
         window.open("edit-expense.html", "_self");
     });
 });
 
 /* To let the user delete the expense */
-/*let delete_button_list = document.querySelectorAll(".delete-expense");
+let delete_button_list = document.querySelectorAll(".delete-expense");
 delete_button_list.forEach(function(delete_button) {
     // change the image of the delete button when user hovers over it
     delete_button.addEventListener("mouseover", function() {
@@ -113,19 +138,19 @@ delete_button_list.forEach(function(delete_button) {
             // get the expense the user clicked on
             var expense = delete_button.parentElement;
             // find the expense in local storage, update the amount left of the budget, and delete it
-            var [curr_expense_json, curr_expense_index] = get_expense_json(expense.firstChild.nextSibling.nextSibling.innerHTML, current_budget_name);
+            var [curr_expense_json, curr_expense_index] = get_expense_json(expense.firstChild.nextSibling.nextSibling.innerHTML, expense.lastChild.previousSibling.innerHTML);
             // find the budget to which the expense belongs and update the amount left
             var [curr_budget_json, curr_budget_index] = get_budget_json(curr_expense_json.budget_name);
             var new_amount_left = (parseFloat(curr_budget_json.amount_left) + parseFloat(curr_expense_json.amount)).toFixed(2);
             if (parseFloat(new_amount_left) > parseFloat(curr_budget_json.amount)) { curr_budget_json.amount_left = curr_budget_json.amount; }
             else { curr_budget_json.amount_left = new_amount_left; }
             localStorage.setItem("budget"+curr_budget_index.toString(), JSON.stringify(curr_budget_json));
-            display_amount_left(curr_budget_json);
             //delete the expense
             localStorage.removeItem("expense"+curr_expense_index.toString());
             expense_counter--;
             localStorage.setItem("expense_counter", expense_counter);
             expense.remove();
+            display_total();
         }
     });
 });
@@ -146,6 +171,6 @@ function get_expense_json(expense_name, budget_name) {
             return [curr_expense_json, i+1];
         }
     }
-}*/
+}
 
 

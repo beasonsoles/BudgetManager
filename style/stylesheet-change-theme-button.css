@@ -43,6 +43,7 @@ input:checked + .sliding-button #circle {
     position: fixed;
     border-radius: 6px;
     left: 2%;
+    margin-top: 2%;
     width: 12%;
     height: 10%;
     z-index: 3;

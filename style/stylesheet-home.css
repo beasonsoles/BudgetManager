@@ -60,11 +60,36 @@
     padding: 3%;
 }
 
-.home-expenses {
+.home-expenses, #total-amount-text, #total-amount-left-text {
     margin-top: 5%;
     color: white;
-    font-size: 200%;
     width: 100%;
+}
+
+.home-expenses {
+    font-size: 200%;
+}
+
+#total-amount-text, #total-amount-left-text {
+    font-size: 150%;
+}
+
+#total-amount, #total-amount-left {
+    color: white;
+}
+
+.total-amount-container, .total-amount-left-container {
+    display: inline-table;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 2%;
+    background-color: rgb(31, 31, 31);
+    border-style: double;
+    border-radius: 10px;
+    border-color: white;
+    border-width: 2px;
+    border-spacing: 3px;
 }
 
 #create-expense-button {
@@ -132,16 +157,16 @@
     filter: invert(100%);
 }
 
-.name, .expense-amount, .budget-name, .reset-period {
+.name, .expense-amount-home, .budget-name-home, .reset-period {
     display: inline-block;
     overflow-wrap: break-word;
 }
 
-.name,  .budget-name, .reset-period {
+.name,  .budget-name-home, .reset-period {
     color: white;
 }
 
-.expense-amount {
+.expense-amount-home {
     color: red;
 }
 
@@ -150,12 +175,12 @@
     margin-right: 7%;
 }
 
-.expense-amount {
+.expense-amount-home {
     margin-left: 7%;
     margin-right: 7%;
 }
 
-.budget-name {
+.budget-name-home {
     margin-left: 7%;
     margin-right: 7%;
 }

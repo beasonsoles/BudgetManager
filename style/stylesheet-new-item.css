@@ -20,18 +20,29 @@ h2, h3 {
     position: relative;
 }
 
-#expensenametext, #expensequantity, #budgetnametext, #budgetquantity, select {
+#expensenametext, #expensequantity, #budgetnametext, #budgetquantity, #scanReceiptButton, #editexpensequantity, select {
     height: 40px;
     border-radius: 5px;
     font-size: large;
+}
+
+#scanReceiptButton {
+    height: 46px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: green;
 }
 
 #budgetnametext, #expensenametext {
     width: 84%;
 }
 
-#expensequantity, #budgetquantity {
+#budgetquantity, #editexpensequantity {
     width: 83%;
+}
+
+#expensequantity {
+    width: 69%;
 }
 
 select {

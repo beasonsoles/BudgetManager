@@ -24,6 +24,7 @@ new_file.addEventListener("change", function(e) {
             localStorage.setItem("userpicture_"+curr_user.toString(), e.target.result);
         });
         reader.readAsDataURL(new_file.files[0]);
+        location.reload();
     }
 });
 

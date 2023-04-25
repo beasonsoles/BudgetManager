@@ -1,0 +1,143 @@
+h2, h3 {
+    color: white;
+    width: 100%;
+}
+
+#new-expense {
+    background-color: black;
+    border-radius: 6px;
+    width: 90%;
+    margin-top: 5%;
+    margin-bottom: 20%;
+    margin-left: 5%;
+}
+
+#expense-title {
+    color: white;
+    width: 100%;
+    font-size: 250%;
+    text-align: center;
+    position: relative;
+}
+
+#expense-quantity, select {
+    height: 40px;
+    border-radius: 5px;
+    font-size: large;
+}
+
+#expense-quantity {
+    width: 83%;
+}
+
+select {
+    width: 85%;
+}
+
+#dollars {
+    color: white;
+    font-size: large;
+    position: relative;
+    font-weight: bold;
+}
+
+#expense-quantity, #dollars {
+    display: inline-block;
+}
+
+#category {
+    position: relative;
+    width: 70%;
+    height: 50px;
+}
+
+.expense-amount, .category, .reset-expense {
+    padding: 2%;
+    padding-top: 0;
+    left: 7%;
+    position: relative;
+}
+
+#send, #cancel {
+    margin-top: 3%;
+    margin-bottom: 3%;
+    width: 20%; 
+    height: 50px;
+    color:black;
+    font-weight: bold;
+    font-size: large;
+    position: relative;
+}
+
+#send {
+    background-color:rgb(20, 145, 241);
+    left: 28%;
+}
+
+#cancel {
+    background-color:rgb(238, 49, 49);
+    left: 32%;
+}
+
+/* MEDIA QUERIES */
+
+/* Tablet */
+
+@media (min-width: 481px) and (max-width: 900px) {
+    #new-expense {
+        margin-top: 10%;
+        margin-bottom: 2%;
+        width: 90%;
+    }
+
+    
+    #expense-quantity {
+        width: 82%;
+    }
+    #send, #cancel {
+        width: 30%;
+        left: 20%;
+        margin-top: 10%;
+        margin-bottom: 5%;
+    }
+}
+
+/* Movil */
+
+@media (max-width: 480px) {
+    .content {
+        width: 100%;
+    }
+
+    #new-expense {
+        margin-top: 15%;
+        margin-bottom: 2%;
+        width: 90%;
+    }
+
+    #expense-quantity {
+        width: 78%;
+    }
+
+    #expense-quantity, select {
+        height: 20px;
+        font-size: small;
+    }
+
+    h2 {
+        font-size: small;
+    }
+
+    .expense-amount {
+        top: 5%;
+        padding: 2%;
+    }
+
+    #send, #cancel {
+        width: 30%; 
+        height: 30px;
+        left: 20%;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+}

@@ -20,7 +20,7 @@ for (var i = 0; i < maximum_budget_counter; i++) {
     current_budget = JSON.parse(budget_text);
     if (current_budget && current_budget.name == current_budget_name) {
         document.getElementById("budget-name").innerHTML = current_budget.name;
-        document.getElementById("budget-amount").innerHTML = "$"+current_budget.amount;
+        document.getElementById("budget-amount").innerHTML = "$"+parseFloat(current_budget.amount).toFixed(2);
         display_amount_left(current_budget);
         //update_budget_amount_left(current_budget, i+1);
         document.getElementById("budget-category").innerHTML = current_budget.category;
@@ -45,7 +45,7 @@ function get_expenses(current_budget_name) {
             var expense_name = expense_json.name;
             var expense_amount = expense_json.amount;
             if (expense_json.reset_period == "Custom Date") {
-                var expense_reset_period = "Day "+expense_json.reset_date + " of each month";
+                var expense_reset_period = "Day "+ expense_json.reset_date + " of each month";
             }
             else {
                 var expense_reset_period = expense_json.reset_period;
@@ -55,8 +55,8 @@ function get_expenses(current_budget_name) {
     }
 }
 
-/* Alert the user if 80% of the budget has been expended */
-if (parseInt(document.getElementById("budget-amount-left").innerHTML.substring(1)) < (parseInt(document.getElementById("budget-amount").innerHTML.substring(1)) * 0.2)) {
+/* Alert the user if 80% of the budget has been expended and include how much time is left*/
+if (parseFloat(document.getElementById("budget-amount-left").innerHTML.split("$")[1]) < (parseFloat(document.getElementById("budget-amount").innerHTML.split("$")[1]) * 0.2) || document.getElementById("budget-amount-left").innerHTML[0] == "-") {
     alertUser();
 }
 
@@ -98,7 +98,7 @@ function add_expense(expense_name, expense_amount, expense_reset_period) {
     edit_expense_img.src = "images/edit.png";
     delete_expense_img.src = "images/delete.png";
     name.innerHTML = expense_name;
-    amount.innerHTML = "-$"+expense_amount;
+    amount.innerHTML = "-$"+parseFloat(expense_amount).toFixed(2);
     reset_period.innerHTML = "Resets: "+expense_reset_period;
 }
 
@@ -109,7 +109,13 @@ create_expense_button.addEventListener("click", function() {
 });
 
 async function alertUser() {
-    setTimeout(function() {alert("80% of Budget Expended")}, 100);
+    var time_left = get_time_left(current_budget_name);
+    if (time_left != undefined) {
+        setTimeout(function() {alert("More than 80% of Budget expended. \n"+time_left)}, 100);
+    } else {
+        setTimeout(function() {alert("More than 80% of Budget expended")}, 100);
+    }
+        
 }
 
 /* To let the user edit the expense */
@@ -183,9 +189,45 @@ function get_expense_json(expense_name, budget_name) {
 
 function display_amount_left(current_budget) {
     if (parseFloat(current_budget.amount_left) >= 0) {
-        document.getElementById("budget-amount-left").innerHTML = "$"+current_budget.amount_left;
+        document.getElementById("budget-amount-left").innerHTML = "$"+parseFloat(current_budget.amount_left).toFixed(2);
     }
     else {
-        document.getElementById("budget-amount-left").innerHTML = "-$"+Math.abs(current_budget.amount_left);
+        document.getElementById("budget-amount-left").innerHTML = "-$"+Math.abs(parseFloat(current_budget.amount_left)).toFixed(2);
+    }
+}
+
+function get_time_left(budget_name) {
+    var curr_date = new Date().toISOString().slice(0, 10);
+    var [budget_json, _] = get_budget_json(budget_name);
+    var conversion = (1000*24*60*60);
+    if (curr_date == budget_json.last_reset) { // user has spent the whole budget in the first day
+        switch (budget_json.reset_period) {
+            case "Daily": return "Budget will be reset tomorrow";
+            case "Weekly": return "Budget will be reset in 1 week";
+            case "Monthly": // same as "Custom Date"
+            case "Custom Date": return "Budget will be reset in 1 month";
+            case "Quarterly": return "Budget will be reset in 3 months";
+            case "Yearly": return "Budget will be reset in 1 year";
+            default: break;
+        }
+    }
+    else {
+        switch (budget_json.reset_period) {
+            case "Daily": return "Budget will be reset tomorrow";
+            case "Weekly": return "Budget will be reset in " + Math.abs(7 - new Date(curr_date)/conversion + new Date(budget_json.last_reset)/conversion) + " day(s)";
+            case "Monthly": return "Budget will be reset in " + Math.abs(30 - new Date(curr_date)/conversion + new Date(budget_json.last_reset)/conversion) + " day(s)";
+            case "Quarterly": return "Budget will be reset in " + Math.abs(90 - new Date(curr_date)/conversion + new Date(budget_json.last_reset)/conversion) + " day(s)";
+            case "Yearly": return "Budget will be reset in " + Math.abs(365 - new Date(curr_date)/conversion + new Date(budget_json.last_reset)/conversion) + " day(s)";
+            case "Custom Date":
+                var curr_date_day = parseInt(curr_date.slice(-2));
+                var reset_date_day = parseInt(budget_json.reset_date);
+                if (curr_date_day < reset_date_day) { // budget has not been reset yet
+                    return "Budget will be reset in " + (reset_date_day - curr_date_day).toString() + " day(s)";
+                } 
+                else if (curr_date_day > reset_date_day) { // budget has already been reset
+                    return "Budget will be reset in " + (30 - curr_date_day + reset_date_day).toString() + " day(s)";
+                } // "equal to" condition is taken care of in the first switch statement
+            default: break;
+        }
     }
 }
